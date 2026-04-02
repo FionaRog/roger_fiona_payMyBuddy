@@ -10,4 +10,8 @@ public class PaymybuddyApplication {
 		SpringApplication.run(PaymybuddyApplication.class, args);
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+
+	}
 }
