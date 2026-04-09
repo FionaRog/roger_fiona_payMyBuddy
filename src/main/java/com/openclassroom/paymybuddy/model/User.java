@@ -15,26 +15,23 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int userId;
+    @Column(name = "id", nullable = false)
+    private int id;
 
-    //rendre unique
-    @Column(name="email")
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(name="username")
+    @Column(nullable = false)
     private String username;
 
-    //sécurisé le mdp
-    @Column(name="password")
+    @Column(nullable = false)
     private String password;
 
-    //unidirectionnelle ou bidirectionnelle mappedBy=?.
+    //unidirectionnelle
     @ManyToMany(
             fetch = FetchType.LAZY,
             cascade = { CascadeType.PERSIST,
                         CascadeType.MERGE}  )
-
     @JoinTable(
             name="assoc_user",
             joinColumns = @JoinColumn(name="id_user1"),

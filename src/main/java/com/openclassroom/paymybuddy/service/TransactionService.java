@@ -4,20 +4,25 @@ import com.openclassroom.paymybuddy.model.Transaction;
 import com.openclassroom.paymybuddy.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
-public class TransactionService {
+@Transactional
+public class TransactionService implements ITransactionService {
 
     @Autowired
     private TransactionRepository transactionRepository;
 
-    public Iterable<Transaction> getTransactions() {
-        return transactionRepository.findAll();
-    }
+    public Transaction addTransaction(Transaction transaction) {
+        if (transaction.getAmount() <= 0) {
+            throw new IllegalArgumentException("Amount must be superior to 0");
+        }
+        if (transaction.getSender().getId() == transaction.getReceiver().getId()) {
+            throw new IllegalArgumentException("Sender and receiver must be different");
+        }
+        return transactionRepository.save(transaction);
 
-    public Optional<Transaction> getTransactionById(Integer id) {
-        return transactionRepository.findById(id);
     }
 }
