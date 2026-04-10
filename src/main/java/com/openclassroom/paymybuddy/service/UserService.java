@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+
 @Service
 public class UserService implements IUserService {
 
@@ -19,6 +20,11 @@ public class UserService implements IUserService {
 
     public Iterable<User> getUsers() {
         return userRepository.findAll();
+    }
+
+    public User getUserWithFriends(String email) {
+        return userRepository.findByEmailWithFriends(email).
+                orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     public Optional<User> getUserByEmail(String email) {
@@ -36,6 +42,28 @@ public class UserService implements IUserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
+
+    public void addFriend(String userEmail, String friendEmail) {
+        User user = userRepository.findByEmail(userEmail).
+                orElseThrow(() -> new RuntimeException("User not found"));
+
+        User friend = userRepository.findByEmail(friendEmail).
+                orElseThrow(() -> new RuntimeException("Friend not found"));
+
+        if(user.getEmail().equals(friend.getEmail())) {
+            throw new RuntimeException("You cannot add yourself");
+        }
+
+        if (user.getUsers().contains(friend.getEmail())) {
+            throw new RuntimeException("Friend already in your contacts");
+        }
+
+        user.getUsers().add(friend);
+
+        userRepository.save(user);
+    }
+
+
 
     //public User deleteUser (User user) { return userRepository.delete(); }
 
