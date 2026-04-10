@@ -31,7 +31,6 @@ public class Transaction {
     @Column(nullable = false)
     private double amount;
 
-    //bon format de date ?
     @Column(name="date_transaction", nullable = false)
     private LocalDateTime dateTransaction;
 
