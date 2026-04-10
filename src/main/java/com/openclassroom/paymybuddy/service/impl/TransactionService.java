@@ -1,12 +1,11 @@
-package com.openclassroom.paymybuddy.service;
+package com.openclassroom.paymybuddy.service.impl;
 
 import com.openclassroom.paymybuddy.model.Transaction;
 import com.openclassroom.paymybuddy.repository.TransactionRepository;
+import com.openclassroom.paymybuddy.service.ITransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @Transactional

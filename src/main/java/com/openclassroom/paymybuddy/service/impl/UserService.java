@@ -1,7 +1,8 @@
-package com.openclassroom.paymybuddy.service;
+package com.openclassroom.paymybuddy.service.impl;
 
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.repository.UserRepository;
+import com.openclassroom.paymybuddy.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    //createuser
 
     public Iterable<User> getUsers() {
         return userRepository.findAll();
@@ -54,7 +57,7 @@ public class UserService implements IUserService {
             throw new RuntimeException("You cannot add yourself");
         }
 
-        if (user.getUsers().contains(friend.getEmail())) {
+        if (userRepository.verifyRelation(user.getId(), friend.getId()) > 0) {
             throw new RuntimeException("Friend already in your contacts");
         }
 
