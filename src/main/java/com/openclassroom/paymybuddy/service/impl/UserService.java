@@ -1,5 +1,9 @@
 package com.openclassroom.paymybuddy.service.impl;
 
+import com.openclassroom.paymybuddy.exception.FriendAlreadyAddedException;
+import com.openclassroom.paymybuddy.exception.InvalidOperationException;
+import com.openclassroom.paymybuddy.exception.UserAlreadyExistsException;
+import com.openclassroom.paymybuddy.exception.UserNotFoundException;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.repository.UserRepository;
 import com.openclassroom.paymybuddy.service.IUserService;
@@ -27,7 +31,7 @@ public class UserService implements IUserService {
 
     public User getUserWithFriends(String email) {
         return userRepository.findByEmailWithFriends(email).
-                orElseThrow(() -> new RuntimeException("User not found"));
+                orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
     public Optional<User> getUserByEmail(String email) {
@@ -40,7 +44,7 @@ public class UserService implements IUserService {
 
     public User addUser (User user) {
         if(userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new IllegalArgumentException("Email already used");
+            throw new UserAlreadyExistsException("Email already used");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
@@ -48,17 +52,17 @@ public class UserService implements IUserService {
 
     public void addFriend(String userEmail, String friendEmail) {
         User user = userRepository.findByEmail(userEmail).
-                orElseThrow(() -> new RuntimeException("User not found"));
+                orElseThrow(() -> new UserNotFoundException("User not found"));
 
         User friend = userRepository.findByEmail(friendEmail).
-                orElseThrow(() -> new RuntimeException("Friend not found"));
+                orElseThrow(() -> new UserNotFoundException("Friend not found"));
 
         if(user.getEmail().equals(friend.getEmail())) {
-            throw new RuntimeException("You cannot add yourself");
+            throw new InvalidOperationException("You cannot add yourself");
         }
 
         if (userRepository.verifyRelation(user.getId(), friend.getId()) > 0) {
-            throw new RuntimeException("Friend already in your contacts");
+            throw new FriendAlreadyAddedException("Friend already in your contacts");
         }
 
         user.getUsers().add(friend);

@@ -1,5 +1,6 @@
 package com.openclassroom.paymybuddy.controller;
 
+import com.openclassroom.paymybuddy.exception.UserNotFoundException;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class LoginController {
         String email = authentication.getName();;
 
         User user = userService.getUserByEmail(email).
-                orElseThrow(() -> new RuntimeException("User not found"));
+                orElseThrow(() -> new UserNotFoundException("User not found"));
 
         return "Welcome " + user.getUsername();
     }

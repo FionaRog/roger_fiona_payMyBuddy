@@ -1,5 +1,7 @@
 package com.openclassroom.paymybuddy.service.impl;
 
+import com.openclassroom.paymybuddy.exception.InvalidTransactionException;
+import com.openclassroom.paymybuddy.exception.UserNotFoundException;
 import com.openclassroom.paymybuddy.model.Transaction;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.repository.TransactionRepository;
@@ -25,15 +27,15 @@ public class TransactionService implements ITransactionService {
 
 
     public Transaction addTransaction(String senderEmail, String receiverEmail, String description, double amount) {
-        User sender = userRepository.findByEmail(senderEmail).orElseThrow(() -> new RuntimeException("Sender not found"));
+        User sender = userRepository.findByEmail(senderEmail).orElseThrow(() -> new UserNotFoundException("Sender not found"));
 
-        User receiver = userRepository.findByEmail(receiverEmail).orElseThrow(() -> new RuntimeException("Receiver not found"));
+        User receiver = userRepository.findByEmail(receiverEmail).orElseThrow(() -> new UserNotFoundException("Receiver not found"));
 
         if(amount <= 0 ) {
-            throw new RuntimeException("Amount must be superior to 0");
+            throw new InvalidTransactionException("Amount must be superior to 0");
         }
         if(sender.getId() == receiver.getId()) {
-            throw new RuntimeException("Sender and receiver must be different");
+            throw new InvalidTransactionException("Sender and receiver must be different");
         }
 
         Transaction transaction = new Transaction();
@@ -48,7 +50,7 @@ public class TransactionService implements ITransactionService {
 
     public List<Transaction> getUserTransactions(String email) {
 
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User not found"));
 
         List<Transaction> sent = transactionRepository.findBySender(user);
         List<Transaction> received = transactionRepository.findByReceiver(user);
