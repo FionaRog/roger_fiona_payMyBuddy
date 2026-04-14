@@ -1,12 +1,13 @@
 package com.openclassroom.paymybuddy.service;
 
-import com.openclassroom.paymybuddy.model.Transaction;
+import com.openclassroom.paymybuddy.dto.TransactionRequestDto;
+import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
 
 import java.util.List;
 
 public interface ITransactionService {
 
-    Transaction addTransaction(String senderEmail, String receiverEmail, String description, double amount);
+    TransactionResponseDto addTransaction(String senderEmail, TransactionRequestDto requestDto);
 
-    List<Transaction> getUserTransactions(String email);
+    List<TransactionResponseDto> getUserTransactions(String email);
 }

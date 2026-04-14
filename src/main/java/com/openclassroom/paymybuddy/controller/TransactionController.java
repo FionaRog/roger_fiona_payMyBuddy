@@ -1,11 +1,16 @@
 package com.openclassroom.paymybuddy.controller;
 
+import com.openclassroom.paymybuddy.dto.TransactionRequestDto;
+import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
 import com.openclassroom.paymybuddy.model.Transaction;
 import com.openclassroom.paymybuddy.service.ITransactionService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -20,30 +25,26 @@ public class TransactionController {
     }
 
     @PostMapping("/transactions/add")
-    public String addTransaction(@RequestParam String receiverEmail,
-                                 @RequestParam(required = false) String description,
-                                 @RequestParam double amount,
-                                 Authentication authentication) {
+    public ResponseEntity<TransactionResponseDto> addTransaction(
+            @RequestBody TransactionRequestDto requestDto,
+            Authentication authentication) {
+
         String senderEmail = authentication.getName();
+        TransactionResponseDto responseDto =
+                transactionService.addTransaction(senderEmail, requestDto);
 
-        transactionService.addTransaction(senderEmail, receiverEmail, description, amount);
-
-        return "Transaction created successfully";
+        return ResponseEntity.ok(responseDto);
     }
 
     @GetMapping("/transactions")
-    public List<String> getTransactions(Authentication authentication) {
+    public String getTransactions(Model model, Authentication authentication) {
 
         String email = authentication.getName();
 
-        List<Transaction> transactions = transactionService.getUserTransactions(email);
+        List<TransactionResponseDto> transactions = transactionService.getUserTransactions(email);
 
-        return transactions.stream().
-                map(t -> t.getSender().getUsername() + "->" +
-                                    t.getReceiver().getUsername() + ":" +
-                                    t.getAmount() + "|" +
-                                    t.getDescription() + "|" +
-                                    t.getDateTransaction())
-                .toList();
+        model.addAttribute("transactions", transactions);
+
+        return "transactions";
     }
 }

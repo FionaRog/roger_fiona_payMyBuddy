@@ -1,7 +1,10 @@
 package com.openclassroom.paymybuddy.service.impl;
 
+import com.openclassroom.paymybuddy.dto.TransactionRequestDto;
+import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
 import com.openclassroom.paymybuddy.exception.InvalidTransactionException;
 import com.openclassroom.paymybuddy.exception.UserNotFoundException;
+import com.openclassroom.paymybuddy.mapper.TransactionMapper;
 import com.openclassroom.paymybuddy.model.Transaction;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.repository.TransactionRepository;
@@ -11,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,30 +27,31 @@ public class TransactionService implements ITransactionService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private TransactionMapper transactionMapper;
 
-    public Transaction addTransaction(String senderEmail, String receiverEmail, String description, double amount) {
-        User sender = userRepository.findByEmail(senderEmail).orElseThrow(() -> new UserNotFoundException("Sender not found"));
 
-        User receiver = userRepository.findByEmail(receiverEmail).orElseThrow(() -> new UserNotFoundException("Receiver not found"));
+    public TransactionResponseDto addTransaction(String senderEmail, TransactionRequestDto requestDto) {
+        User sender = userRepository.findByEmail(senderEmail).
+                orElseThrow(() -> new UserNotFoundException("Sender not found"));
 
-        if(amount <= 0 ) {
+        User receiver = userRepository.findByEmail(requestDto.getReceiverEmail()).
+                orElseThrow(() -> new UserNotFoundException("Receiver not found"));
+
+        if(requestDto.getAmount() <= 0 ) {
             throw new InvalidTransactionException("Amount must be superior to 0");
         }
         if(sender.getId() == receiver.getId()) {
             throw new InvalidTransactionException("Sender and receiver must be different");
         }
 
-        Transaction transaction = new Transaction();
-        transaction.setSender(sender);
-        transaction.setReceiver(receiver);
-        transaction.setDescription(description);
-        transaction.setAmount(amount);
-        transaction.setDateTransaction(LocalDateTime.now());
+        Transaction transaction = transactionMapper.toEntity(requestDto, sender, receiver);
+        Transaction savedTransaction = transactionRepository.save(transaction);
 
-        return transactionRepository.save(transaction);
+        return transactionMapper.toDto(savedTransaction);
     }
 
-    public List<Transaction> getUserTransactions(String email) {
+    public List<TransactionResponseDto> getUserTransactions(String email) {
 
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User not found"));
 
@@ -59,6 +62,8 @@ public class TransactionService implements ITransactionService {
         all.addAll(sent);
         all.addAll(received);
 
-        return all;
+        return all.stream()
+                .map(transactionMapper::toDto)
+                .toList();
     }
 }
