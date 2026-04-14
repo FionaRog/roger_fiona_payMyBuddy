@@ -32,18 +32,32 @@ public class TransactionService implements ITransactionService {
 
 
     public TransactionResponseDto addTransaction(String senderEmail, TransactionRequestDto requestDto) {
+
         User sender = userRepository.findByEmail(senderEmail).
                 orElseThrow(() -> new UserNotFoundException("Sender not found"));
 
         User receiver = userRepository.findByEmail(requestDto.getReceiverEmail()).
                 orElseThrow(() -> new UserNotFoundException("Receiver not found"));
 
-        if(requestDto.getAmount() <= 0 ) {
+        double amount = requestDto.getAmount();
+        if(amount <= 0 ) {
             throw new InvalidTransactionException("Amount must be superior to 0");
         }
+        if (sender.getBalance() < amount) {
+            throw new InvalidTransactionException("Insufficient balance");
+        }
+
         if(sender.getId() == receiver.getId()) {
             throw new InvalidTransactionException("Sender and receiver must be different");
         }
+
+        int relationCount = userRepository.verifyRelation(sender.getId(), receiver.getId());
+        if (relationCount == 0) {
+            throw new InvalidTransactionException("Receiver must be in sender's friends list");
+        }
+
+        sender.setBalance(sender.getBalance() - amount);
+        receiver.setBalance(receiver.getBalance() + amount);
 
         Transaction transaction = transactionMapper.toEntity(requestDto, sender, receiver);
         Transaction savedTransaction = transactionRepository.save(transaction);

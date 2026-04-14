@@ -27,6 +27,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private double balance = 0.00;
+
     //unidirectionnelle
     @ManyToMany(
             fetch = FetchType.LAZY,
