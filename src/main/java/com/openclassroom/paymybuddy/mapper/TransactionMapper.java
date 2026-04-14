@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", imports = java.time.LocalDateTime.class)
 public interface TransactionMapper {
 
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "transactionId", ignore = true)
     @Mapping(target = "sender", source = "sender")
     @Mapping(target = "receiver", source = "receiver")
     @Mapping(target = "dateTransaction", expression = "java(LocalDateTime.now())")

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 public class TransactionResponseDto {
 
-    private int id;
+    private int transactionId;
     private String senderUsername;
     private String receiverUsername;
     private String description;
