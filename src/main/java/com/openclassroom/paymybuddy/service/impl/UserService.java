@@ -1,5 +1,6 @@
 package com.openclassroom.paymybuddy.service.impl;
 
+import com.openclassroom.paymybuddy.dto.UpdatePasswordRequestDto;
 import com.openclassroom.paymybuddy.exception.FriendAlreadyAddedException;
 import com.openclassroom.paymybuddy.exception.InvalidOperationException;
 import com.openclassroom.paymybuddy.exception.UserAlreadyExistsException;
@@ -12,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
 @Transactional
 @Service
@@ -24,7 +24,6 @@ public class UserService implements IUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    //createuser
 
     public Iterable<User> getUsers() {
         return userRepository.findAll();
@@ -35,19 +34,18 @@ public class UserService implements IUserService {
                 orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
-    public Optional<User> getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email).
+                orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
     public User addUser (User user) {
         if(userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("Email already used");
         }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return userRepository.save(user);
     }
 
@@ -66,15 +64,32 @@ public class UserService implements IUserService {
             throw new FriendAlreadyAddedException("Friend already in your contacts");
         }
 
-        user.getUsers().add(friend);
+        user.getFriends().add(friend);
 
         userRepository.save(user);
     }
 
+    public void updatePassword(String email, UpdatePasswordRequestDto requestDto) {
+        User user = userRepository.findByEmail(email).
+                orElseThrow(() -> new UserNotFoundException("User not found"));
 
+        if (!passwordEncoder.matches(requestDto.getCurrentPassword(), user.getPassword())) {
+            throw new InvalidOperationException("Incorrect password");
+        }
 
-    //public User deleteUser (User user) { return userRepository.delete(); }
+        if (requestDto.getNewPassword() == null || requestDto.getNewPassword().isBlank()) {
+            throw new InvalidOperationException("New password cannot be empty");
+        }
 
+        if (!requestDto.getNewPassword().equals(requestDto.getConfirmPassword())) {
+            throw new InvalidOperationException("New password does not match the confirmation");
+        }
 
+        if (passwordEncoder.matches(requestDto.getNewPassword(), user.getPassword())) {
+            throw new InvalidOperationException("New password is the same as your current password");
+        }
+
+        user.setPassword(passwordEncoder.encode(requestDto.getNewPassword()));
+    }
 
 }

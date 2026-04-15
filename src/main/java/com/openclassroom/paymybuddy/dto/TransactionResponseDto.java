@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 public class TransactionResponseDto {
 
+    //modifier pour être en adéquation avec la maquette ?
     private int transactionId;
     private String senderUsername;
     private String receiverUsername;

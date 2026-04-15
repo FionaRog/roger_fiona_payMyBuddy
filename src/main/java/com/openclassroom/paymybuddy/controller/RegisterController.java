@@ -22,6 +22,7 @@ public class RegisterController {
         user.setEmail(email);
         user.setPassword(password);
         user.setUsername(username);
+        user.setBalance(0.0);
 
         userService.addUser(user);
         return "redirect:/login";

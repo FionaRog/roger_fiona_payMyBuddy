@@ -2,16 +2,14 @@ package com.openclassroom.paymybuddy.controller;
 
 import com.openclassroom.paymybuddy.dto.TransactionRequestDto;
 import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
-import com.openclassroom.paymybuddy.model.Transaction;
 import com.openclassroom.paymybuddy.service.ITransactionService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -25,15 +23,16 @@ public class TransactionController {
     }
 
     @PostMapping("/transactions/add")
-    public ResponseEntity<TransactionResponseDto> addTransaction(
-            @RequestBody TransactionRequestDto requestDto,
-            Authentication authentication) {
+    public String addTransaction(
+            @ModelAttribute TransactionRequestDto requestDto,
+            Authentication authentication, RedirectAttributes redirectAttributes) {
 
         String senderEmail = authentication.getName();
-        TransactionResponseDto responseDto =
-                transactionService.addTransaction(senderEmail, requestDto);
+        transactionService.addTransaction(senderEmail, requestDto);
 
-        return ResponseEntity.ok(responseDto);
+        redirectAttributes.addFlashAttribute("successMessage", "Transaction created");
+
+        return "redirect:/transactions";
     }
 
     @GetMapping("/transactions")

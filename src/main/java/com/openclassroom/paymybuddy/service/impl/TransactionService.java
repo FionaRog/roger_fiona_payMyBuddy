@@ -65,6 +65,7 @@ public class TransactionService implements ITransactionService {
         return transactionMapper.toDto(savedTransaction);
     }
 
+    // retirer received pour être ok avec la maquette ?
     public List<TransactionResponseDto> getUserTransactions(String email) {
 
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User not found"));

@@ -27,6 +27,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    // utile ? pas demandé mais me semble logique
     @Column(nullable = false)
     private double balance = 0.00;
 
@@ -40,6 +41,6 @@ public class User {
             joinColumns = @JoinColumn(name="id_user1"),
             inverseJoinColumns = @JoinColumn(name="id_user2")
     )
-    private List<User> users = new ArrayList<>();
+    private List<User> friends = new ArrayList<>();
 
 }
