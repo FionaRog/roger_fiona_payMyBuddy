@@ -1,7 +1,7 @@
 package com.openclassroom.paymybuddy.controller;
 
 import com.openclassroom.paymybuddy.dto.UpdatePasswordRequestDto;
-import com.openclassroom.paymybuddy.model.User;
+import com.openclassroom.paymybuddy.dto.UserResponseDto;
 import com.openclassroom.paymybuddy.service.IUserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class ProfileController {
 
-
     private final IUserService userService;
 
     public ProfileController(IUserService userService){
@@ -25,10 +24,9 @@ public class ProfileController {
     public String getProfile(Model model, Authentication authentication) {
         String email = authentication.getName();
 
-        User user = userService.getUserByEmail(email);
+        UserResponseDto userDto = userService.getUserProfile(email);
 
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
+        model.addAttribute("user", userDto);
 
         return "profile";
     }

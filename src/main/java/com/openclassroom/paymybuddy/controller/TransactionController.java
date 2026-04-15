@@ -3,6 +3,7 @@ package com.openclassroom.paymybuddy.controller;
 import com.openclassroom.paymybuddy.dto.TransactionRequestDto;
 import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
 import com.openclassroom.paymybuddy.service.ITransactionService;
+import com.openclassroom.paymybuddy.service.IUserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +19,11 @@ public class TransactionController {
 
     private final ITransactionService transactionService;
 
-    public TransactionController(ITransactionService transactionService) {
+    private final IUserService userService;
+
+    public TransactionController(ITransactionService transactionService, IUserService userService) {
         this.transactionService = transactionService;
+        this.userService = userService;
     }
 
     @PostMapping("/transactions/add")
@@ -41,8 +45,10 @@ public class TransactionController {
         String email = authentication.getName();
 
         List<TransactionResponseDto> transactions = transactionService.getUserTransactions(email);
+        List<String> friends = userService.getFriendUsernames(email);
 
         model.addAttribute("transactions", transactions);
+        model.addAttribute("friends", friends);
 
         return "transactions";
     }

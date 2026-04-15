@@ -33,6 +33,7 @@ public class FriendController {
         return "redirect:/friends";
     }
 
+    // utile ? pas d'option de vue pour visualiser sa liste de friends
     @GetMapping("/friends")
     public String getFriends(Model model, Authentication authentication) {
         String currentUserEmail = authentication.getName();

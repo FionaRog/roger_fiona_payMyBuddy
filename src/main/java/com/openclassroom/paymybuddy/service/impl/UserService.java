@@ -1,10 +1,12 @@
 package com.openclassroom.paymybuddy.service.impl;
 
 import com.openclassroom.paymybuddy.dto.UpdatePasswordRequestDto;
+import com.openclassroom.paymybuddy.dto.UserResponseDto;
 import com.openclassroom.paymybuddy.exception.FriendAlreadyAddedException;
 import com.openclassroom.paymybuddy.exception.InvalidOperationException;
 import com.openclassroom.paymybuddy.exception.UserAlreadyExistsException;
 import com.openclassroom.paymybuddy.exception.UserNotFoundException;
+import com.openclassroom.paymybuddy.mapper.UserMapper;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.repository.UserRepository;
 import com.openclassroom.paymybuddy.service.IUserService;
@@ -13,7 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 
+//Ajout de la javadoc ?
+//Ajout de logger info, error, debug ?
 @Transactional
 @Service
 public class UserService implements IUserService {
@@ -23,6 +28,9 @@ public class UserService implements IUserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserMapper userMapper;
 
 
     public Iterable<User> getUsers() {
@@ -34,9 +42,21 @@ public class UserService implements IUserService {
                 orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
-    public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email).
+    public UserResponseDto getUserProfile(String email) {
+        User user = userRepository.findByEmail(email).
                 orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        return userMapper.toDto(user);
+    }
+
+    public List<String> getFriendUsernames(String email) {
+        User user = userRepository.findByEmailWithFriends(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        return user.getFriends()
+                .stream()
+                .map(User::getUsername)
+                .toList();
     }
 
     public User addUser (User user) {

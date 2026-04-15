@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+//Ajout de la javadoc ?
+//Ajout de logger info, error, debug ?
 @Service
 @Transactional
 public class TransactionService implements ITransactionService {
