@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<header>
+    <h1>
+        <a th:href="@{/transactions}">Pay My Buddy</a>
+    </h1>
+    <nav>
+        <a th:href="@{/transactions}">Transférer</a>
+        <a th:href="@{/profile}">Profil</a>
+        <a th:href="@{/friends}">Ajouter relation</a>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </nav>
+</header>
+
+<body>
+<main>
+    <p th:if="${param.logout}">Déconnecté.e</p>
+    <p th:if="${successMessage}" th:text="${successMessage}"></p>
+
+
+    <form th:action="@{/transactions/add}" th:object="${transactionRequestDto}" method="post">
+        <div>
+            <select th:field="*{receiverEmail}" required>
+                <option value="">Sélectionner une relation</option>
+                <option th:each="friend : ${friends}" th:value="${friend.email}" th:text="${friend.username}"></option>
+            </select>
+        </div>
+        <div>
+             <input type="text"  th:field="*{description}" placeholder="Description" maxlength="100"> "/>
+        </div>
+         <div>
+            <input type="number" th:field="*{amount}" placeholder="0" step="0.01" min="0.01" required> </div>
+        </div>
+        <div>
+             <button type="submit">Payer</button>
+        </div>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Sender</th>
+            <th>Receiver</th>
+            <th>Description</th>
+            <th>Montant</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="transaction : ${transactions}">
+            <td th:text="${transaction.senderUsername}"></td>
+            <td th:text="${transaction.receiverUsername}"></td>
+            <td th:text="${transaction.description}"></td>
+            <td th:text="${transaction.amount}"></td>
+            <td th:text="${transaction.dateTransaction}"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

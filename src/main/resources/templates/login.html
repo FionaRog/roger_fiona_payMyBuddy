@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - Pay My Buddy</title>
+</head>
+<body>
+
+<header>
+    <h1 >
+        <a th:href="@{/login}">Pay My Buddy</a>
+    </h1>
+</header>
+<main>
+    <p th:if="${param.error}">Email ou mot de pase incorrect.</p>
+    <p th:if="${param.logout}">Déconnecté.e</p>
+    
+    <form th:action="@{/login}" method="post">
+      <div>
+            <input type="email" name="email" id="email" placeholder="Mail" required>
+        </div>
+
+        <div>
+            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+        </div>
+
+        <div>
+            <button type="submit">Se connecter</button>
+        </div>
+    </form>
+</main>
+
+</body>
+</html>
