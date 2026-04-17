@@ -18,7 +18,7 @@ public interface UserRepository extends CrudRepository <User, Integer> {
     @Query("SELECT u FROM User u LEFT JOIN FETCH u.friends WHERE u.email = :email")
     Optional<User> findByEmailWithFriends(@Param("email") String email);
 
-    @Query(value= "SELECT count(id) FROM assoc_user WHERE (id_user1 = :userId AND id_user2 = :friendId) OR (id_user1 = :friendId AND id_user2 = :userId)", nativeQuery = true)
+    @Query(value= "SELECT count(*) FROM assoc_user WHERE (id_user1 = :userId AND id_user2 = :friendId) OR (id_user1 = :friendId AND id_user2 = :userId)", nativeQuery = true)
         int verifyRelation(int userId, int friendId);
 
 }

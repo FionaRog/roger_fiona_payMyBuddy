@@ -2,6 +2,7 @@ package com.openclassroom.paymybuddy.controller;
 
 import com.openclassroom.paymybuddy.dto.TransactionRequestDto;
 import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
+import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.service.ITransactionService;
 import com.openclassroom.paymybuddy.service.IUserService;
 import org.springframework.security.core.Authentication;
@@ -34,7 +35,7 @@ public class TransactionController {
         String senderEmail = authentication.getName();
         transactionService.addTransaction(senderEmail, requestDto);
 
-        redirectAttributes.addFlashAttribute("successMessage", "Transaction created");
+        redirectAttributes.addFlashAttribute("successMessage", "Transaction créée");
 
         return "redirect:/transactions";
     }
@@ -45,10 +46,12 @@ public class TransactionController {
         String email = authentication.getName();
 
         List<TransactionResponseDto> transactions = transactionService.getUserTransactions(email);
-        List<String> friends = userService.getFriendUsernames(email);
+        List<User> friends = userService.getFriendUsernames(email);
 
         model.addAttribute("transactions", transactions);
         model.addAttribute("friends", friends);
+        model.addAttribute("transactionRequestDto", new TransactionRequestDto());
+
 
         return "transactions";
     }

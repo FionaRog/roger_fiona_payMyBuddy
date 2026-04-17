@@ -19,7 +19,7 @@ public interface IUserService {
 
     User getUserWithFriends(String email);
 
-    List<String> getFriendUsernames(String email);
+    List<User> getFriendUsernames(String email);
 
     void updatePassword(String email, UpdatePasswordRequestDto updatePasswordRequestDto);
 }

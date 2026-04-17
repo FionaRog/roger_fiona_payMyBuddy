@@ -28,12 +28,11 @@ public class FriendController {
 
         userService.addFriend(currentUserEmail, email);
 
-        redirectAttributes.addFlashAttribute("successMessage", "Friend added");
+        redirectAttributes.addFlashAttribute("successMessage", "Relation ajoutée");
 
         return "redirect:/friends";
     }
 
-    // utile ? pas d'option de vue pour visualiser sa liste de friends
     @GetMapping("/friends")
     public String getFriends(Model model, Authentication authentication) {
         String currentUserEmail = authentication.getName();

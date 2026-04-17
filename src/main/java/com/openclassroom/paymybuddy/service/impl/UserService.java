@@ -49,14 +49,11 @@ public class UserService implements IUserService {
         return userMapper.toDto(user);
     }
 
-    public List<String> getFriendUsernames(String email) {
+    public List<User> getFriendUsernames(String email) {
         User user = userRepository.findByEmailWithFriends(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
 
-        return user.getFriends()
-                .stream()
-                .map(User::getUsername)
-                .toList();
+        return user.getFriends();
     }
 
     public User addUser (User user) {

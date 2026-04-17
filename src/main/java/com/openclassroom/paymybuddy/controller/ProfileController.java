@@ -37,7 +37,7 @@ public class ProfileController {
 
         userService.updatePassword(email, requestDto);
 
-        redirectAttributes.addFlashAttribute("successMessage", "Password updated");
+        redirectAttributes.addFlashAttribute("successMessage", "Mot de passe mis à jour");
 
         return "redirect:/profile";
     }
