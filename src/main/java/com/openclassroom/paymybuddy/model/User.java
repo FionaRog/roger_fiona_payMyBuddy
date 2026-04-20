@@ -27,7 +27,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // utile ? pas demandé mais me semble logique
     @Column(nullable = false)
     private double balance = 0.00;
 

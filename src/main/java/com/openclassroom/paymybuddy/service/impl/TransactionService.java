@@ -17,10 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-//Ajout de la javadoc ?
-//Ajout de logger info, error, debug ?
 @Service
-@Transactional
 public class TransactionService implements ITransactionService {
 
     @Autowired
@@ -67,7 +64,6 @@ public class TransactionService implements ITransactionService {
         return transactionMapper.toDto(savedTransaction);
     }
 
-    // retirer received pour être ok avec la maquette ?
     public List<TransactionResponseDto> getUserTransactions(String email) {
 
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User not found"));

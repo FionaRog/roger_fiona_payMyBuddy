@@ -1,4 +1,4 @@
-package com.openclassroom.paymybuddy.service;
+package com.openclassroom.paymybuddy.service.impl;
 
 import com.openclassroom.paymybuddy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

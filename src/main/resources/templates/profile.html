@@ -24,6 +24,63 @@
     <p th:if="${param.logout}">Déconnecté.e</p>
     <p th:if="${successMessage}" th:text="${successMessage}"></p>
 
+    <section>
+        <form th:action="@{/profile/username}" method="post">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" th:value="${username}" required>
+            </div>
+            <button type="submit">Modifier</button>
+        </form>
+    </section>
+
+    <section>
+        <div>
+            <label>Mail</label>
+            <input type="email" name="email" th:value="${user.email}" readonly>
+        </div>
+    </section>
+
+    <section>
+        <div th:if="${param.editPassword == null}">
+            <label>Password</label>
+            <input type="password" value="*******" readonly>
+
+            <a th:href="@{/profile(editPassword=true)}">Modifier</a>
+        </div>
+
+        <div th:if="${param.editPassword}">
+            <form th:action="@{/profile/password}" th:object="${updatePasswordRequestDto}" method="post">
+                 <div>
+                    <label for="currentPassword">Mot de passe actuel</label>
+                    <input type="password" id="currentPassword" th:field="*{currentPassword}" placeholder="Mot de passe actuel" required/>
+                </div>
+                <div>
+                    <label for="newPassword">Nouveau mot de passe</label>
+                    <input type="password" id="newPassword" th:field="*{newPassword}" placeholder="Nouveau mot de passe" required/>
+                </div>
+                <div>
+                    <label for="confirmPassword">Confirmer mot de passe</label>
+                    <input type="password" id="confirmPassword" th:field="*{confirmPassword}" placeholder="Confirmer mot de passe" required/>
+                </div>
+                <button type="submit">Valider</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <label for="balance">Solde actuel</label>
+        <p id="balance" th:text="${user.balance}"></p>
+    </section>
+    <section>
+        <form th:action="@{/profile/balance}" method="post">
+            <div>
+                <label for="updateBalance">Modifier le solde</label>
+                <input type="number" id="updateBalance" name="amount" step="0.01" placeholder="0.00" required>
+            </div>
+            <button type="submit">Modifier</button>
+        </form>
+    </section>
 
 </main>
 

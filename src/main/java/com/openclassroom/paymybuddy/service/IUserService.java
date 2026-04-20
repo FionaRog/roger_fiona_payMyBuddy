@@ -22,4 +22,8 @@ public interface IUserService {
     List<User> getFriendUsernames(String email);
 
     void updatePassword(String email, UpdatePasswordRequestDto updatePasswordRequestDto);
+
+    void updateUsername(String email, String username);
+
+    void updateBalance(String email, double Amount);
 }

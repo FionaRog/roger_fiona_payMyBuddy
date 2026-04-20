@@ -17,9 +17,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//Ajout de la javadoc ?
-//Ajout de logger info, error, debug ?
-@Transactional
+//Ajout de la javadoc
+//Ajout de logger info, error, debug
+//Gestion des erreurs côté front
+//v1 ajout
+//OK @transactionnal mettre readonly ou @ttransactionnal au dessus des méthodes
 @Service
 public class UserService implements IUserService {
 
@@ -56,6 +58,7 @@ public class UserService implements IUserService {
         return user.getFriends();
     }
 
+    @Transactional
     public User addUser (User user) {
         if(userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("Email already used");
@@ -66,6 +69,7 @@ public class UserService implements IUserService {
         return userRepository.save(user);
     }
 
+    @Transactional
     public void addFriend(String userEmail, String friendEmail) {
         User user = userRepository.findByEmail(userEmail).
                 orElseThrow(() -> new UserNotFoundException("User not found"));
@@ -86,6 +90,7 @@ public class UserService implements IUserService {
         userRepository.save(user);
     }
 
+    @Transactional
     public void updatePassword(String email, UpdatePasswordRequestDto requestDto) {
         User user = userRepository.findByEmail(email).
                 orElseThrow(() -> new UserNotFoundException("User not found"));
@@ -109,4 +114,26 @@ public class UserService implements IUserService {
         user.setPassword(passwordEncoder.encode(requestDto.getNewPassword()));
     }
 
+    @Transactional
+    public void updateUsername(String email, String username) {
+        User user = userRepository.findByEmail(email).
+                orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        user.setUsername(username);
+        userRepository.save(user);
+    }
+
+    @Transactional
+    public void updateBalance(String email, double amount) {
+        User user = userRepository.findByEmail(email).
+                orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        double newBalance = user.getBalance() + amount;
+
+        if(newBalance < 0) {
+            throw new InvalidOperationException("Balance cannot be negative"); };
+
+        user.setBalance(newBalance);
+        userRepository.save(user);
+    }
 }

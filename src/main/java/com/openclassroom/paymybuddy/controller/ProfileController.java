@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -27,17 +28,46 @@ public class ProfileController {
         UserResponseDto userDto = userService.getUserProfile(email);
 
         model.addAttribute("user", userDto);
+        model.addAttribute("updatePasswordRequestDto", new UpdatePasswordRequestDto());
 
         return "profile";
     }
 
     @PostMapping("/profile/password")
-    public String updatePassword(@ModelAttribute UpdatePasswordRequestDto requestDto, Authentication authentication, RedirectAttributes redirectAttributes) {
+    public String updatePassword(@ModelAttribute UpdatePasswordRequestDto requestDto,
+                                 Authentication authentication,
+                                 RedirectAttributes redirectAttributes) {
         String email = authentication.getName();
 
         userService.updatePassword(email, requestDto);
 
         redirectAttributes.addFlashAttribute("successMessage", "Mot de passe mis à jour");
+
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/profile/username")
+    public String updateUsername(@RequestParam String username,
+                                 Authentication authentication,
+                                 RedirectAttributes redirectAttributes) {
+        String email = authentication.getName();
+
+        userService.updateUsername(email, username);
+
+        redirectAttributes.addFlashAttribute("successMessage", "Username mis à jour");
+
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/profile/balance")
+    public String updateBalance(@RequestParam double amount,
+                                Authentication authentication,
+                                RedirectAttributes redirectAttributes) {
+        String email = authentication.getName();
+
+        userService.updateBalance(email, amount);
+
+        redirectAttributes.addFlashAttribute("successMessage", "Solde mis à jour");
 
         return "redirect:/profile";
     }
