@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -41,16 +42,31 @@ public class TransactionController {
     }
 
     @GetMapping("/transactions")
-    public String getTransactions(Model model, Authentication authentication) {
+    public String getTransactions(@RequestParam(defaultValue = "all") String filter, Model model, Authentication authentication) {
 
         String email = authentication.getName();
 
         List<TransactionResponseDto> transactions = transactionService.getUserTransactions(email);
         List<User> friends = userService.getFriendUsernames(email);
 
-        model.addAttribute("transactions", transactions);
+        String currentUsername = userService.getUserProfile(email).getUsername();
+
+        List<TransactionResponseDto> filteredTransactions = transactions;
+
+        if("sent".equals(filter)) {
+            filteredTransactions = transactions.stream()
+                    .filter(transaction -> transaction.getSenderUsername().equals(currentUsername))
+                    .toList();
+        } else if("received".equals(filter)) {
+            filteredTransactions = transactions.stream()
+                    .filter(transaction -> transaction.getReceiverUsername().equals(currentUsername))
+                    .toList();
+        }
+
+        model.addAttribute("transactions", filteredTransactions);
         model.addAttribute("friends", friends);
         model.addAttribute("transactionRequestDto", new TransactionRequestDto());
+        model.addAttribute("selectedFilter", filter);
 
 
         return "transactions";

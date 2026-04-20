@@ -44,12 +44,24 @@
         </div>
     </form>
 
+    <form th:action="@{/transactions}" method="get">
+        <select name="filter">
+            <option value="all" th:selected="${selectedFilter == 'all'}">Toutes</option>
+            <option value="sent" th:selected="${selectedFilter == 'sent'}">Envoyées</option>
+            <option value="received" th:selected="${selectedFilter == 'received'}">Reçues</option>
+        </select>
+        <button type="submit">Filtrer</button>
+    </form>
     <table>
-        <caption>Mes transactions</caption>
+        <caption th:switch="${selectedFilter}">
+            <span th:case=" 'sent' "> Mes transactions envoyées</span>
+            <span th:case=" 'received' ">Mes transactions reçues</span>
+            <span th:case=" 'all' "> Mes transactions</span>
+        </caption>
         <thead>
         <tr>
-            <th>Sender</th>
-            <th>Receiver</th>
+            <th>Expéditeur</th>
+            <th>Destinataire</th>
             <th>Description</th>
             <th>Montant</th>
             <th>Date</th>
