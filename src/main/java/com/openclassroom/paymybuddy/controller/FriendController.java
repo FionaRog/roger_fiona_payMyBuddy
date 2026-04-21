@@ -1,27 +1,44 @@
 package com.openclassroom.paymybuddy.controller;
 
-import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.service.IUserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
+/*
+Contrôleur chargé de l'affichage et de la gestion des amis.
 
+<p> Permet à l'utilisateur d'ajouter un ami. </p>
+ */
 @Controller
 public class FriendController {
 
-
     private final IUserService userService;
 
+    /**
+     * Construit le contrôleur avec le service utilisateur nécessaire à la gestion des amis.
+     *
+     * @param userService service métier des utilisateurs
+     */
     public FriendController(IUserService userService) {
         this.userService = userService;
     }
 
+    /**
+     * Ajoute un utilisateur à la liste d'amis de l'utilisateur connecté.
+     *
+     * L'email de l'utilisateur à ajouter est fourni par le formulaire.
+     * L'utilisateur connecté est récupéré depuis l'authentification Spring Security.
+     * En cas de succès, un message de confirmation est ajouté dans les attributs flash.
+     *
+     * @param email l'email de l'utilisateur à ajouter comme ami
+     * @param authentication objet d'authentification contenant l'utilisateur connecté
+     * @param redirectAttributes attributs flash utilisés pour transmettre un message après redirection
+     * @return une redirection vers la page {@code friends}
+     */
     @PostMapping("/friends/add")
     public String addFriend(@RequestParam String email, Authentication authentication, RedirectAttributes redirectAttributes) {
         String currentUserEmail = authentication.getName();
@@ -33,19 +50,13 @@ public class FriendController {
         return "redirect:/friends";
     }
 
+    /**
+     * Affiche la page d'ajout d'amis.
+     *
+     * @return le nom de la vue {@code friends}
+     */
     @GetMapping("/friends")
-    public String getFriends(Model model, Authentication authentication) {
-        String currentUserEmail = authentication.getName();
-
-        User user = userService.getUserWithFriends(currentUserEmail);
-
-        List<String> friends = user.getFriends()
-                .stream()
-                .map(User::getUsername)
-                .toList();
-
-        model.addAttribute("friends", friends);
-
+    public String showFriendPage() {
         return "friends";
     }
 }

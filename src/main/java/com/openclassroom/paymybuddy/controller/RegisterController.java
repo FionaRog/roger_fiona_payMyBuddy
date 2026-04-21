@@ -7,6 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Contrôleur chargé de l'inscription des nouveaux utilisateurs.
+ *
+ * <p>Reçoit les informations du formulaire d'inscription, crée un nouvel utilisateur
+ * et le persiste via le service utilisateur après encodage du mot de passe.</p>
+ */
 @Controller
 public class RegisterController {
 
@@ -14,11 +20,28 @@ public class RegisterController {
 
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * Construit le contrôleur avec le service utilisateur et l'encodeur de mot de passe.
+     *
+     * @param userService service métier des utilisateurs
+     * @param passwordEncoder encodeur de mot de passe utilisé pour sécuriser le mot de passe
+     */
     public RegisterController(IUserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     * Traite la soumission du formulaire d'inscription.
+     *
+     * Crée un nouvel utilisateur avec un solde initial à zéro, encode son mot de passe,
+     * puis l'enregistre en base de données.
+     *
+     * @param email adresse email du nouvel utilisateur
+     * @param username pseudo choisi
+     * @param password mot de passe en clair saisi lors de l'inscription
+     * @return une redirection vers la page de connexion
+     */
     @PostMapping("/register")
     public String register(@RequestParam String email, @RequestParam String username, @RequestParam String password) {
 
