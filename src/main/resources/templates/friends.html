@@ -24,6 +24,8 @@
 <main>
     <p th:if="${param.logout}">Déconnecté.e</p>
     <p th:if="${successMessage}" th:text="${successMessage}"></p>
+    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
 
     <form th:action="@{/friends/add}" method="post">
     <div>

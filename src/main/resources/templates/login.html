@@ -14,7 +14,9 @@
 <main>
     <p th:if="${param.error}">Email ou mot de pase incorrect.</p>
     <p th:if="${param.logout}">Déconnecté.e</p>
-    
+    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+
     <form th:action="@{/login}" method="post">
       <div>
             <input type="email" name="email" id="email" placeholder="Mail" required>

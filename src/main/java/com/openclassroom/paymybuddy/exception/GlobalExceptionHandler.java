@@ -1,65 +1,51 @@
 package com.openclassroom.paymybuddy.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * Gestion globale des exceptions métier de l'application.
+ *
+ * <p>Intercepte toutes les {@link BusinessException} levées par les services
+ * et redirige l'utilisateur vers la page des transactions avec un message d'erreur.</p>
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleUserNotFound(UserNotFoundException ex) {
+    /**
+     * Gère toutes les exceptions métier de l'application.
+     *
+     * Ajoute un message d'erreur dans les attributs flash afin qu'il soit
+     * affiché sur la page de destination après la redirection.
+     *
+     * @param ex l'exception métier levée
+     * @param redirectAttributes attributs flash utilisés après redirection
+     * @return une redirection vers la page principale des transactions
+     */
+    @ExceptionHandler(BusinessException.class)
+    public String handleBusinessException(BusinessException ex,
+                                          RedirectAttributes redirectAttributes) {
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("timestamp", LocalDateTime.now());
-        response.put("error", ex.getMessage());
-
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
+        return "redirect:/transactions";
     }
 
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<Map<String, Object>> handleUserExists(UserAlreadyExistsException ex) {
+    /**
+     * Gère les exceptions non anticipées.
+     *
+     * Pour des raisons de sécurité, le message technique n’est pas affiché à l’utilisateur.
+     * Seul un message générique est exposé côté frontend.
+     */
+    @ExceptionHandler(Exception.class)
+    public String handleGenericException(Exception ex, RedirectAttributes redirectAttributes) {
+        System.err.println("Erreur interne non gérée : " + ex.getMessage());
+        ex.printStackTrace();
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("timestamp", LocalDateTime.now());
-        response.put("error", ex.getMessage());
+        redirectAttributes.addFlashAttribute("errorMessage",
+                "Une erreur interne s'est produite. Veuillez réessayer.");
 
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(FriendAlreadyAddedException.class)
-    public ResponseEntity<Map<String, Object>> handleFriendExists(FriendAlreadyAddedException ex) {
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("timestamp", LocalDateTime.now());
-        response.put("error", ex.getMessage());
-
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(InvalidOperationException.class)
-    public ResponseEntity<Map<String, Object>> handleInvalidOperation(InvalidOperationException ex) {
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("timestamp", LocalDateTime.now());
-        response.put("error", ex.getMessage());
-
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(InvalidTransactionException.class)
-    public ResponseEntity<Map<String, Object>> handleTransactionError(InvalidTransactionException ex) {
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("timestamp", LocalDateTime.now());
-        response.put("error", ex.getMessage());
-
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return "redirect:/transactions";
     }
 }
 

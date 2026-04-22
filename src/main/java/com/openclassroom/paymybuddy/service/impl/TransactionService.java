@@ -2,8 +2,7 @@ package com.openclassroom.paymybuddy.service.impl;
 
 import com.openclassroom.paymybuddy.dto.TransactionRequestDto;
 import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
-import com.openclassroom.paymybuddy.exception.InvalidTransactionException;
-import com.openclassroom.paymybuddy.exception.UserNotFoundException;
+import com.openclassroom.paymybuddy.exception.BusinessException;
 import com.openclassroom.paymybuddy.mapper.TransactionMapper;
 import com.openclassroom.paymybuddy.model.Transaction;
 import com.openclassroom.paymybuddy.model.User;
@@ -65,38 +64,39 @@ public class TransactionService implements ITransactionService {
      * @param requestDto le DTO contenant les informations de la transaction (non {@code null})
      * @return un {@link TransactionResponseDto} représentant la transaction enregistrée
      *
-     * @throws UserNotFoundException si l'expéditeur ou le destinataire n'existe pas
-     * @throws InvalidTransactionException  si :
+     * @throws BusinessException  si :
      *          <ul>
+     *              <li>l'expéditeur ou le destinatair n'existe pas</li>
      *            <li>le montant est inférieur ou égal à 0,</li>
      *            <li>l'expéditeur n'a pas suffisament de solde,</li>
      *            <li>l'expéditeur et le destinataire sont identiques,</li>
      *            <li>le destinataire n'apparaît pas dans la liste d'amis de l'expéditeur.</li>
      *          </ul>
      */
+    @Transactional
     public TransactionResponseDto addTransaction(String senderEmail, TransactionRequestDto requestDto) {
 
         User sender = userRepository.findByEmail(senderEmail).
-                orElseThrow(() -> new UserNotFoundException("Sender not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur expéditeur introuvable"));
 
         User receiver = userRepository.findByEmail(requestDto.getReceiverEmail()).
-                orElseThrow(() -> new UserNotFoundException("Receiver not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur destinataire introuvable"));
 
         double amount = requestDto.getAmount();
         if(amount <= 0 ) {
-            throw new InvalidTransactionException("Amount must be superior to 0");
+            throw new BusinessException("INVALID_TRANSACTION", "Le montant doit être supérieur à 0.00");
         }
         if (sender.getBalance() < amount) {
-            throw new InvalidTransactionException("Insufficient balance");
+            throw new BusinessException("INVALID_TRANSACTION", "Solde insuffisant");
         }
 
         if(sender.getId() == receiver.getId()) {
-            throw new InvalidTransactionException("Sender and receiver must be different");
+            throw new BusinessException("INVALID_TRANSACTION","L'expéditeur et le destinataire doivent être différents");
         }
 
         int relationCount = userRepository.verifyRelation(sender.getId(), receiver.getId());
         if (relationCount == 0) {
-            throw new InvalidTransactionException("Receiver must be in sender's friends list");
+            throw new BusinessException("INVALID_TRANSACTION","Le destinataire doit être dans la liste de relations");
         }
 
         sender.setBalance(sender.getBalance() - amount);
@@ -118,11 +118,12 @@ public class TransactionService implements ITransactionService {
      *              transactions (non {@code null})
      * @return une liste de {@link TransactionResponseDto} représentant toutes les
      *         transactions envoyées et reçues par l'utilisateur
-     * @throws UserNotFoundException si aucun utilisateur n'est trouvé avec cet email
+     * @throws BusinessException si aucun utilisateur n'est trouvé avec cet email
      */
     public List<TransactionResponseDto> getUserTransactions(String email) {
 
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User not found"));
+        User user = userRepository.findByEmail(email).
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
 
         List<Transaction> sent = transactionRepository.findBySender(user);
         List<Transaction> received = transactionRepository.findByReceiver(user);

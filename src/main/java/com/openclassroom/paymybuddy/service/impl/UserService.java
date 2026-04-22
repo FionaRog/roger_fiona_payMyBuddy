@@ -2,10 +2,7 @@ package com.openclassroom.paymybuddy.service.impl;
 
 import com.openclassroom.paymybuddy.dto.UpdatePasswordRequestDto;
 import com.openclassroom.paymybuddy.dto.UserResponseDto;
-import com.openclassroom.paymybuddy.exception.FriendAlreadyAddedException;
-import com.openclassroom.paymybuddy.exception.InvalidOperationException;
-import com.openclassroom.paymybuddy.exception.UserAlreadyExistsException;
-import com.openclassroom.paymybuddy.exception.UserNotFoundException;
+import com.openclassroom.paymybuddy.exception.BusinessException;
 import com.openclassroom.paymybuddy.mapper.UserMapper;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.repository.UserRepository;
@@ -32,11 +29,6 @@ import java.util.List;
  *
  *
  */
-//Ajout de la javadoc
-//Ajout de logger info, error, debug
-//Gestion des erreurs côté front
-//v1 ajout
-//OK @transactionnal mettre readonly ou @ttransactionnal au dessus des méthodes
 @Service
 public class UserService implements IUserService {
     /**
@@ -73,11 +65,11 @@ public class UserService implements IUserService {
      *
      * @param email l'email de l'utilisateur recherché (non {@code null})
      * @return l'entité {@link User} correspondante, incluant sa liste d'amis
-     * @throws UserNotFoundException si aucun utilisateur n'est trouvé avec cet email
+     * @throws BusinessException si aucun utilisateur n'est trouvé avec cet email
      */
     public User getUserWithFriends(String email) {
         return userRepository.findByEmailWithFriends(email).
-                orElseThrow(() -> new UserNotFoundException("User not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
     }
 
     /**
@@ -85,11 +77,11 @@ public class UserService implements IUserService {
      *
      * @param email l'email de l'utilisateur dont on souhaite obtenir le profil (non {@code null})
      * @return un {@link UserResponseDto} représentant le profil de l'utilisateur
-     * @throws UserNotFoundException si aucun utilisateur n'est trouvé avec cet email
+     * @throws BusinessException si aucun utilisateur n'est trouvé avec cet email
      */
     public UserResponseDto getUserProfile(String email) {
         User user = userRepository.findByEmail(email).
-                orElseThrow(() -> new UserNotFoundException("User not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
 
         return userMapper.toDto(user);
     }
@@ -99,11 +91,11 @@ public class UserService implements IUserService {
      *
      * @param email l'email de l'utilisateur dont on souhaite obtenir la liste d'amis (non {@code null})
      * @return une liste de {@link User} représentant les amis de l'utilisateur
-     * @throws UserNotFoundException si aucun utilisateur n'est trouvé avec cet email
+     * @throws BusinessException si aucun utilisateur n'est trouvé avec cet email
      */
     public List<User> getFriendUsernames(String email) {
         User user = userRepository.findByEmailWithFriends(email)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
+                .orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
 
         return user.getFriends();
     }
@@ -114,12 +106,12 @@ public class UserService implements IUserService {
      *
      * @param user l'entité {@link User} à ajouter (non {@code null})
      * @return l'utilisateur après sauvegarde avec un identifiant unique généré
-     * @throws UserAlreadyExistsException si un utilisateur avec cet email existe déjà
+     * @throws BusinessException si un utilisateur avec cet email existe déjà
      */
     @Transactional
     public User addUser (User user) {
         if(userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new UserAlreadyExistsException("Email already used");
+            throw new BusinessException("USER_ALREADY_EXIST", "Email déjà utilisé");
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -132,24 +124,23 @@ public class UserService implements IUserService {
      *
      * @param userEmail l'email de l'utilisateur qui ajoute un ami (non {@code null})
      * @param friendEmail l'email de l'utilisateur à ajouter en tant qu'ami (non {@ode null})
-     * @throws UserNotFoundException si l'utilisateur ou l'ami n'existe pas
-     * @throws InvalidOperationException si l'utilisateur tente de s'ajouter lui-même
-     * @throws FriendAlreadyAddedException si l'ami est déjà dans la liste d'amis
+     * @throws BusinessException si l'utilisateur ou l'ami n'existe pas et si l'utilisateur
+     * tente de s'ajouter lui-même ou si l'ami est déjà dans la liste d'amis
      */
     @Transactional
     public void addFriend(String userEmail, String friendEmail) {
         User user = userRepository.findByEmail(userEmail).
-                orElseThrow(() -> new UserNotFoundException("User not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
 
         User friend = userRepository.findByEmail(friendEmail).
-                orElseThrow(() -> new UserNotFoundException("Friend not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Relation introuvable"));
 
         if(user.getEmail().equals(friend.getEmail())) {
-            throw new InvalidOperationException("You cannot add yourself");
+            throw new BusinessException("INVALID_OPERATION", "Vous ne pouvez vous ajouter vous-même");
         }
 
         if (userRepository.verifyRelation(user.getId(), friend.getId()) > 0) {
-            throw new FriendAlreadyAddedException("Friend already in your contacts");
+            throw new BusinessException("FRIEND_ALREADY_ADDED", "Personne déjà dans vos contacts");
         }
 
         user.getFriends().add(friend);
@@ -160,11 +151,12 @@ public class UserService implements IUserService {
     /**
      * Met à jour le mot de passe d'un utilisateur.
      * <p>Le nouveau mot de passe est encodé et sauvegardé.</p>
+     *
      * @param email l'email de l'utilisateur dont on met à jour le mot de passe (non {@code null})
      * @param requestDto le DTO contenant le mot de passe actuel, le nouveau mot de passe et sa confirmation (non {@code null})
-     * @throws UserNotFoundException si l'utilisateur n'existe pas
-     * @throws InvalidOperationException si :
+     * @throws BusinessException si :
      *      <ul>
+     *          <li>l'utilisateur n'existe pas,</li>
      *          <li>le mot de passe actuel est incorrect,</li>
      *          <li>le nouveau mot de passe est vide,</li>
      *          <li>le nouveau mot de passe ne correspond pas à la confirmation,</li>
@@ -174,22 +166,22 @@ public class UserService implements IUserService {
     @Transactional
     public void updatePassword(String email, UpdatePasswordRequestDto requestDto) {
         User user = userRepository.findByEmail(email).
-                orElseThrow(() -> new UserNotFoundException("User not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
 
         if (!passwordEncoder.matches(requestDto.getCurrentPassword(), user.getPassword())) {
-            throw new InvalidOperationException("Incorrect password");
+            throw new BusinessException("INVALID_PASSWORD", "Mot de passe incorrect");
         }
 
         if (requestDto.getNewPassword() == null || requestDto.getNewPassword().isBlank()) {
-            throw new InvalidOperationException("New password cannot be empty");
+            throw new BusinessException("INVALID_PASSWORD","Le nouveau mot de passe de peut être vide");
         }
 
         if (!requestDto.getNewPassword().equals(requestDto.getConfirmPassword())) {
-            throw new InvalidOperationException("New password does not match the confirmation");
+            throw new BusinessException("INVALID_PASSWORD","Le nouveau mot de passe ne correspond pas à la confirmation");
         }
 
         if (passwordEncoder.matches(requestDto.getNewPassword(), user.getPassword())) {
-            throw new InvalidOperationException("New password is the same as your current password");
+            throw new BusinessException("INVALID_PASSWORD","Le nouveau mot de passe est le même que le mot de passe actuel");
         }
 
         user.setPassword(passwordEncoder.encode(requestDto.getNewPassword()));
@@ -201,16 +193,16 @@ public class UserService implements IUserService {
      *
      * @param email l'email de l'utilisateur dont on met à jour le pseudo (non {@ode null})
      * @param username le nouveau pseudo de l'utilisateur (non {@code null})
-     * @throws UserNotFoundException si aucun utilisateur n'est trouvé avec cet email
-     * @throws InvalidOperationException si le nouveau pseudo est vide
+     * @throws BusinessException si aucun utilisateur n'est trouvé avec cet email et si
+     * le nouveau pseudo est vide
      */
     @Transactional
     public void updateUsername(String email, String username) {
         User user = userRepository.findByEmail(email).
-                orElseThrow(() -> new UserNotFoundException("User not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
 
         if(username == null || username.isEmpty()) {
-            throw new InvalidOperationException("Username cannot be null");
+            throw new BusinessException("INVALID_OPERATION", "Le username ne peut être null");
         }
         user.setUsername(username);
         userRepository.save(user);
@@ -221,18 +213,18 @@ public class UserService implements IUserService {
      *
      * @param email l'email de l'utilisateur dont on met à jour le solde (non {@code null})
      * @param amount le montant à ajouter (peut-être négatif pour retrait)
-     * @throws UserNotFoundException si aucun utilisateur n'est trouvé avec cet email
-     * @throws InvalidOperationException si le solde résultant est inférieur à 0
+     * @throws BusinessException si aucun utilisateur n'est trouvé avec cet email et si
+     * le solde résultant est inférieur à 0
      */
     @Transactional
     public void updateBalance(String email, double amount) {
         User user = userRepository.findByEmail(email).
-                orElseThrow(() -> new UserNotFoundException("User not found"));
+                orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
 
         double newBalance = user.getBalance() + amount;
 
         if(newBalance < 0) {
-            throw new InvalidOperationException("Balance cannot be negative"); };
+            throw new BusinessException("INVALID_OPERATION", "Le solde ne peut être négatif"); };
 
         user.setBalance(newBalance);
         userRepository.save(user);

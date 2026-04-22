@@ -8,6 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
+//Ajout de la javadoc
+//Supprimer getUsers et getUserswithfriends?
+//Ajout de logger info, error, debug
+//Gestion des erreurs côté front
+//v1 ajout
+//Gestion des exceptions côté front sur /transaction ? Ou modifier les controller pour affichage sur chaque page
 @SpringBootApplication
 public class PaymybuddyApplication implements CommandLineRunner {
 

@@ -2,7 +2,6 @@ package com.openclassroom.paymybuddy.service;
 
 import com.openclassroom.paymybuddy.dto.UpdatePasswordRequestDto;
 import com.openclassroom.paymybuddy.dto.UserResponseDto;
-import com.openclassroom.paymybuddy.exception.UserNotFoundException;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.service.impl.UserService;
 
