@@ -1,5 +1,6 @@
 package com.openclassroom.paymybuddy.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * Fournit l'accès aux vues de connexion et d'inscription.
  */
+@Slf4j
 @Controller
 public class ViewController {
 
@@ -18,6 +20,8 @@ public class ViewController {
      */
     @GetMapping("/login")
     public String showLoginPage() {
+
+        log.info("GET_LOGIN_PAGE - Affichage de la page de connexion");
         return "login";
     }
 
@@ -28,6 +32,8 @@ public class ViewController {
      */
     @GetMapping("/register")
     public String showRegisterPage() {
+
+        log.info("GET_REGISTER_PAGE - Affichage de la page d'inscription");
         return "register";
     }
 }

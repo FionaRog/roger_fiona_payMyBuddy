@@ -5,6 +5,7 @@ import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.service.ITransactionService;
 import com.openclassroom.paymybuddy.service.IUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import java.util.List;
  * <p>Permet de créer une transaction et d'afficher l'historique des transactions
  * de l'utilisateur connecté avec un filtre optionnel.</p>
  */
+@Slf4j
 @Controller
 public class TransactionController {
 
@@ -58,10 +60,12 @@ public class TransactionController {
             Authentication authentication, RedirectAttributes redirectAttributes) {
 
         String senderEmail = authentication.getName();
+        log.info("POST_TRANSACTIONS_ADD_INIT - Appel pour l'utilisateur={}", senderEmail);
         transactionService.addTransaction(senderEmail, requestDto);
 
         redirectAttributes.addFlashAttribute("successMessage", "Transaction créée");
 
+        log.info("POST_TRANSACTIONS_ADD_SUCCESS - Transaction ajoutée par l'utilisateur={}", senderEmail);
         return "redirect:/transactions";
     }
 
@@ -81,6 +85,9 @@ public class TransactionController {
 
         String email = authentication.getName();
 
+        log.info("GET_TRANSACTIONS_INIT - Appel pour l'utilisateur={}", email);
+        log.debug("GET_TRANSACTIONS_FILTER - Filter reçu: {}", filter);
+
         List<TransactionResponseDto> transactions = transactionService.getUserTransactions(email);
         List<User> friends = userService.getFriendUsernames(email);
 
@@ -92,10 +99,12 @@ public class TransactionController {
             filteredTransactions = transactions.stream()
                     .filter(transaction -> transaction.getSenderUsername().equals(currentUsername))
                     .toList();
+            log.debug("GET_TRANSACTIONS_FILTER - Filtre 'sent' appliqué, transactions filtrées: {}", filteredTransactions.size());
         } else if("received".equals(filter)) {
             filteredTransactions = transactions.stream()
                     .filter(transaction -> transaction.getReceiverUsername().equals(currentUsername))
                     .toList();
+            log.debug("GET_TRANSACTIONS_FILTER - Filtre 'received' appliqué, transactions filtrées: {}", filteredTransactions.size());
         }
 
         model.addAttribute("transactions", filteredTransactions);
@@ -104,6 +113,7 @@ public class TransactionController {
         model.addAttribute("selectedFilter", filter);
 
 
+        log.info("GET_TRANSACTIONS_SUCCESS - Affichage de la page transactions pour l'utilisateur={}", email);
         return "transactions";
     }
 }

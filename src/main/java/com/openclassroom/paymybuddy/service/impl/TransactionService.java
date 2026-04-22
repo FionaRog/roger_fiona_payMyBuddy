@@ -9,6 +9,7 @@ import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.repository.TransactionRepository;
 import com.openclassroom.paymybuddy.repository.UserRepository;
 import com.openclassroom.paymybuddy.service.ITransactionService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +31,7 @@ import java.util.List;
  *     <li>le destinataire doit figurer dans la liste de contact de l'expéditeur.</li>
  * </ul>
  */
-
+@Slf4j
 @Service
 public class TransactionService implements ITransactionService {
     /**
@@ -76,6 +77,9 @@ public class TransactionService implements ITransactionService {
     @Transactional
     public TransactionResponseDto addTransaction(String senderEmail, TransactionRequestDto requestDto) {
 
+        log.info("ADD_TRANSACTION_INIT - Début de la transaction de {} vers {}, montant : {}",
+                senderEmail, requestDto.getReceiverEmail(), requestDto.getAmount());
+
         User sender = userRepository.findByEmail(senderEmail).
                 orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur expéditeur introuvable"));
 
@@ -83,28 +87,42 @@ public class TransactionService implements ITransactionService {
                 orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur destinataire introuvable"));
 
         double amount = requestDto.getAmount();
+
         if(amount <= 0 ) {
+            log.warn("ADD_TRANSACTION_INVALID_AMOUNT - Montant de la transaction {} invalide (email={})",
+                    amount, senderEmail);
             throw new BusinessException("INVALID_TRANSACTION", "Le montant doit être supérieur à 0.00");
         }
+
         if (sender.getBalance() < amount) {
+            log.warn("ADD_TRANSACTION_INVALID_BALANCE - Solde insuffisant pour l'expéditeur {} : solde={}, montant={}",
+                    senderEmail, sender.getBalance(), amount);
             throw new BusinessException("INVALID_TRANSACTION", "Solde insuffisant");
         }
 
         if(sender.getId() == receiver.getId()) {
+            log.warn("ADD_TRANSACTION_SELF - Tentative de transaction vers soi-même pour l'utilisateur '{}'",
+                    senderEmail);
             throw new BusinessException("INVALID_TRANSACTION","L'expéditeur et le destinataire doivent être différents");
         }
 
         int relationCount = userRepository.verifyRelation(sender.getId(), receiver.getId());
         if (relationCount == 0) {
+            log.warn("ADD_TRANSACTION_INVALID_FRIENDS - Le destinataire {} n'est pas dans les relations de {}",
+                    receiver.getEmail(), senderEmail);
             throw new BusinessException("INVALID_TRANSACTION","Le destinataire doit être dans la liste de relations");
         }
 
         sender.setBalance(sender.getBalance() - amount);
         receiver.setBalance(receiver.getBalance() + amount);
+        log.debug("ADD_TRANSACTION_BALANCE_UPDATED - Soldes mis à jour pour l'expéditeur {} et le destinataire {}, montant={}",
+                senderEmail, receiver.getEmail(), amount);
 
         Transaction transaction = transactionMapper.toEntity(requestDto, sender, receiver);
         Transaction savedTransaction = transactionRepository.save(transaction);
 
+        log.info("ADD_TRANSACTION_SUCCESS - Transaction de {} vers {} créée par {}, id={}",
+                amount, receiver.getEmail(), senderEmail, savedTransaction.getTransactionId());
         return transactionMapper.toDto(savedTransaction);
     }
 
@@ -122,16 +140,22 @@ public class TransactionService implements ITransactionService {
      */
     public List<TransactionResponseDto> getUserTransactions(String email) {
 
+        log.info("GET_USER_TRANSACTIONS - Récupération de l'historique des transactions pour l'utilisateur {}",
+                email);
         User user = userRepository.findByEmail(email).
                 orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
 
         List<Transaction> sent = transactionRepository.findBySender(user);
         List<Transaction> received = transactionRepository.findByReceiver(user);
 
+        log.debug("GET_USER_TRANSACTIONS_SIZE - Transactions pour l'utilisateur {}: envoyées={}, reçues={}",
+                email, sent.size(), received.size());
         List<Transaction> all = new ArrayList<>();
         all.addAll(sent);
         all.addAll(received);
 
+        log.info("GET_USER_TRANSACTIONS_SUCCESS - Nombre total de transactions récupérées : {} pour l'utilisateur {}",
+                all.size(), email);
         return all.stream()
                 .map(transactionMapper::toDto)
                 .toList();

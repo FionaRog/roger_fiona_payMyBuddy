@@ -1,5 +1,6 @@
 package com.openclassroom.paymybuddy.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * <p>Intercepte toutes les {@link BusinessException} levées par les services
  * et redirige l'utilisateur vers la page des transactions avec un message d'erreur.</p>
  */
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -27,6 +29,8 @@ public class GlobalExceptionHandler {
     public String handleBusinessException(BusinessException ex,
                                           RedirectAttributes redirectAttributes) {
 
+        log.info("BUSINESS_EXCEPTION_CAUGHT - Code={}, Message={}", ex.getErrorCode(), ex.getMessage());
+
         redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
         return "redirect:/transactions";
     }
@@ -39,8 +43,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public String handleGenericException(Exception ex, RedirectAttributes redirectAttributes) {
-        System.err.println("Erreur interne non gérée : " + ex.getMessage());
-        ex.printStackTrace();
+        log.error("UNEXPECTED_EXCEPTION_CAUGHT - Erreur non gérée : " + ex.getMessage(), ex);
 
         redirectAttributes.addFlashAttribute("errorMessage",
                 "Une erreur interne s'est produite. Veuillez réessayer.");

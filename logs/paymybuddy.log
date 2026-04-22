@@ -1,0 +1,573 @@
+2026-04-22T13:47:45.488+02:00  INFO 29092 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 29092 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T13:47:45.490+02:00  INFO 29092 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T13:47:45.870+02:00  INFO 29092 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T13:47:45.902+02:00  INFO 29092 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 2 JPA repository interfaces.
+2026-04-22T13:47:46.230+02:00  INFO 29092 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T13:47:46.238+02:00  INFO 29092 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T13:47:46.238+02:00  INFO 29092 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T13:47:46.273+02:00  INFO 29092 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 758 ms
+2026-04-22T13:47:46.371+02:00  INFO 29092 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T13:47:46.404+02:00  INFO 29092 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T13:47:46.687+02:00  INFO 29092 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T13:47:46.710+02:00  INFO 29092 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T13:47:46.895+02:00  INFO 29092 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11978f52
+2026-04-22T13:47:46.897+02:00  INFO 29092 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T13:47:46.936+02:00  WARN 29092 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T13:47:46.947+02:00  INFO 29092 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T13:47:47.524+02:00  INFO 29092 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T13:47:47.570+02:00  INFO 29092 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T13:47:47.618+02:00  INFO 29092 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T13:47:48.039+02:00  WARN 29092 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T13:47:48.078+02:00  INFO 29092 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T13:47:48.341+02:00  INFO 29092 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T13:47:48.344+02:00  INFO 29092 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.145 seconds (process running for 3.395)
+2026-04-22T13:47:48.353+02:00  INFO 29092 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T13:47:48.425+02:00  INFO 29092 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T13:48:44.763+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T13:48:44.763+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T13:48:44.764+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-04-22T13:48:44.834+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T13:49:00.156+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-9] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T13:49:27.684+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:49:27.684+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS - Récupération de l'historique des transactions pour l'utilisateur test@gmail.com
+2026-04-22T13:49:27.700+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS_SUCCESS - Nombre total de transactions récupérées : 2 pour l'utilisateur test@gmail.com
+2026-04-22T13:49:27.706+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.paymybuddy.service.impl.UserService  : GET_FRIENDS_LIST - Récupération de la liste des amis pour l'utilisateur email=test@gmail.com
+2026-04-22T13:49:27.717+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:49:27.719+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:53:03.497+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-8] c.o.p.controller.TransactionController   : POST_TRANSACTIONS_ADD_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:53:03.499+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-8] c.o.p.service.impl.TransactionService    : ADD_TRANSACTION_INIT - Début de la transaction de test@gmail.com vers spiky@gmail.com, montant : 10.51
+2026-04-22T13:53:03.545+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-8] c.o.p.service.impl.TransactionService    : ADD_TRANSACTION_SUCCESS - Transaction de 10.51 vers spiky@gmail.com créée par test@gmail.com, id=6
+2026-04-22T13:53:03.555+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-8] c.o.p.controller.TransactionController   : POST_TRANSACTIONS_ADD_SUCCESS - Transaction ajoutée par l'utilisateur=test@gmail.com
+2026-04-22T13:53:03.563+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:53:03.563+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS - Récupération de l'historique des transactions pour l'utilisateur test@gmail.com
+2026-04-22T13:53:03.568+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS_SUCCESS - Nombre total de transactions récupérées : 3 pour l'utilisateur test@gmail.com
+2026-04-22T13:53:03.570+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.paymybuddy.service.impl.UserService  : GET_FRIENDS_LIST - Récupération de la liste des amis pour l'utilisateur email=test@gmail.com
+2026-04-22T13:53:03.572+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:53:03.574+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:53:41.555+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-10] c.o.p.controller.ProfileController       : GET_PROFILE_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:53:41.555+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-10] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:53:41.557+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-10] c.o.p.controller.ProfileController       : GET_PROFILE_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:28.425+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ProfileController       : POST_PROFILE_USERNAME_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:28.426+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-1] c.o.paymybuddy.service.impl.UserService  : UPDATE_USERNAME_INIT - Tentative de mise à jour du username pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:28.428+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-1] c.o.paymybuddy.service.impl.UserService  : UPDATE_USERNAME_SUCCESS - Pseudonyme mis à jour avec succès pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:28.434+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ProfileController       : POST_PROFILE_USERNAME_SUCCESS - Username mis à jour pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:28.439+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.p.controller.ProfileController       : GET_PROFILE_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:28.439+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:54:28.441+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.p.controller.ProfileController       : GET_PROFILE_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:54.727+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-3] c.o.p.controller.ProfileController       : POST_PROFILE_BALANCE_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:54.728+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-3] c.o.paymybuddy.service.impl.UserService  : UPDATE_BALANCE_INIT - Tentative de mise à jour du solde pour l'utilisateur=test@gmail.com avec un montant=30.0
+2026-04-22T13:54:54.730+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-3] c.o.paymybuddy.service.impl.UserService  : UPDATE_BALANCE_SUCCESS - Solde mis à jour avec succès pour l'utilisateur=test@gmail.com, nouveau solde=129.49
+2026-04-22T13:54:54.735+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-3] c.o.p.controller.ProfileController       : POST_PROFILE_BALANCE_SUCCESS - Solde mis à jour pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:54.741+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-9] c.o.p.controller.ProfileController       : GET_PROFILE_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:54:54.741+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-9] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:54:54.743+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-9] c.o.p.controller.ProfileController       : GET_PROFILE_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:55:13.062+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-5] c.o.p.controller.ProfileController       : POST_PROFILE_BALANCE_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:55:13.063+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-5] c.o.paymybuddy.service.impl.UserService  : UPDATE_BALANCE_INIT - Tentative de mise à jour du solde pour l'utilisateur=test@gmail.com avec un montant=-150.0
+2026-04-22T13:55:13.066+02:00  WARN 29092 --- [paymybuddy] [http-nio-8080-exec-5] c.o.paymybuddy.service.impl.UserService  : UPDATE_BALANCE_NEGATIVE - Tentative de mise à jour du solde conduisant à un solde négatif pour l'utilisateur=test@gmail.com, solde=129.49, montant=-150.0
+2026-04-22T13:55:13.072+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-5] c.o.p.exception.GlobalExceptionHandler   : BUSINESS_EXCEPTION_CAUGHT - Code=INVALID_OPERATION, Message=Le solde ne peut être négatif
+2026-04-22T13:55:13.075+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:55:13.077+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS - Récupération de l'historique des transactions pour l'utilisateur test@gmail.com
+2026-04-22T13:55:13.081+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS_SUCCESS - Nombre total de transactions récupérées : 3 pour l'utilisateur test@gmail.com
+2026-04-22T13:55:13.083+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.paymybuddy.service.impl.UserService  : GET_FRIENDS_LIST - Récupération de la liste des amis pour l'utilisateur email=test@gmail.com
+2026-04-22T13:55:13.085+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:55:13.086+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:55:44.070+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-7] c.o.p.controller.FriendController        : GET_FRIENDS_PAGE_INIT - Affichage de la page d'ajout d'amis (friends)
+2026-04-22T13:55:49.887+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-8] c.o.p.controller.FriendController        : POST_FRIENDS_ADD_INIT - Appel de l'endpoint /friends/add pour l'utilisateur=test@gmail.com
+2026-04-22T13:55:49.888+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-8] c.o.paymybuddy.service.impl.UserService  : ADD_FRIEND_INIT - Tentative d'ajout de l'utilisateur shade@gmail.com comme ami de test@gmail.com
+2026-04-22T13:55:49.896+02:00  WARN 29092 --- [paymybuddy] [http-nio-8080-exec-8] c.o.paymybuddy.service.impl.UserService  : ADD_FRIEND_ALREADY_EXISTS - L'utilisateur test@gmail.com est déjà ami avec shade@gmail.com (relation déjà existante)
+2026-04-22T13:55:49.898+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-8] c.o.p.exception.GlobalExceptionHandler   : BUSINESS_EXCEPTION_CAUGHT - Code=FRIEND_ALREADY_ADDED, Message=Personne déjà dans vos contacts
+2026-04-22T13:55:49.902+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:55:49.902+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS - Récupération de l'historique des transactions pour l'utilisateur test@gmail.com
+2026-04-22T13:55:49.906+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS_SUCCESS - Nombre total de transactions récupérées : 3 pour l'utilisateur test@gmail.com
+2026-04-22T13:55:49.908+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.paymybuddy.service.impl.UserService  : GET_FRIENDS_LIST - Récupération de la liste des amis pour l'utilisateur email=test@gmail.com
+2026-04-22T13:55:49.910+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:55:49.911+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:56:13.840+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-10] c.o.p.controller.ProfileController       : GET_PROFILE_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:56:13.840+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-10] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:56:13.841+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-10] c.o.p.controller.ProfileController       : GET_PROFILE_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:56:17.489+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.FriendController        : GET_FRIENDS_PAGE_INIT - Affichage de la page d'ajout d'amis (friends)
+2026-04-22T13:56:30.341+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_INIT - Appel pour l'utilisateur=test@gmail.com
+2026-04-22T13:56:30.342+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS - Récupération de l'historique des transactions pour l'utilisateur test@gmail.com
+2026-04-22T13:56:30.347+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.p.service.impl.TransactionService    : GET_USER_TRANSACTIONS_SUCCESS - Nombre total de transactions récupérées : 3 pour l'utilisateur test@gmail.com
+2026-04-22T13:56:30.349+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.paymybuddy.service.impl.UserService  : GET_FRIENDS_LIST - Récupération de la liste des amis pour l'utilisateur email=test@gmail.com
+2026-04-22T13:56:30.350+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.paymybuddy.service.impl.UserService  : GET_USER_PROFILE - Récupération du profil utilisateur pour l'email=test@gmail.com
+2026-04-22T13:56:30.352+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-2] c.o.p.controller.TransactionController   : GET_TRANSACTIONS_SUCCESS - Affichage de la page transactions pour l'utilisateur=test@gmail.com
+2026-04-22T13:56:31.862+02:00  INFO 29092 --- [paymybuddy] [http-nio-8080-exec-9] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:14:19.697+02:00  INFO 16932 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 16932 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T16:14:19.699+02:00  INFO 16932 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T16:14:20.100+02:00  INFO 16932 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T16:14:20.132+02:00  INFO 16932 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 2 JPA repository interfaces.
+2026-04-22T16:14:20.471+02:00  INFO 16932 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T16:14:20.479+02:00  INFO 16932 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T16:14:20.479+02:00  INFO 16932 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T16:14:20.514+02:00  INFO 16932 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 787 ms
+2026-04-22T16:14:20.619+02:00  INFO 16932 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T16:14:20.650+02:00  INFO 16932 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T16:14:20.947+02:00  INFO 16932 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T16:14:20.971+02:00  INFO 16932 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T16:14:21.153+02:00  INFO 16932 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@be1c08a
+2026-04-22T16:14:21.154+02:00  INFO 16932 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T16:14:21.191+02:00  WARN 16932 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T16:14:21.206+02:00  INFO 16932 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T16:14:21.819+02:00  INFO 16932 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T16:14:21.868+02:00  INFO 16932 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T16:14:21.910+02:00  INFO 16932 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T16:14:22.335+02:00  WARN 16932 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T16:14:22.383+02:00  INFO 16932 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T16:14:22.655+02:00  INFO 16932 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T16:14:22.659+02:00  INFO 16932 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.27 seconds (process running for 3.539)
+2026-04-22T16:14:22.668+02:00  INFO 16932 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T16:14:22.734+02:00  INFO 16932 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T16:14:27.326+02:00  INFO 16932 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T16:14:27.327+02:00  INFO 16932 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T16:14:27.327+02:00  INFO 16932 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-04-22T16:14:27.363+02:00  INFO 16932 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:14:27.610+02:00 ERROR 16932 --- [paymybuddy] [http-nio-8080-exec-2] c.o.p.exception.GlobalExceptionHandler   : UNEXPECTED_EXCEPTION_CAUGHT - Erreur non gérée : No static resource css/style.css for request '/css/style.css'.
+
+org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css for request '/css/style.css'.
+	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:527) ~[spring-webmvc-7.0.6.jar:7.0.6]
+	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:50) ~[spring-webmvc-7.0.6.jar:7.0.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-7.0.6.jar:7.0.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866) ~[spring-webmvc-7.0.6.jar:7.0.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000) ~[spring-webmvc-7.0.6.jar:7.0.6]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:892) ~[spring-webmvc-7.0.6.jar:7.0.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622) ~[tomcat-embed-core-11.0.20.jar:6.1]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874) ~[spring-webmvc-7.0.6.jar:7.0.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710) ~[tomcat-embed-core-11.0.20.jar:6.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:235) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:371) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:245) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:239) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:118) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2026-04-22T16:14:27.690+02:00  INFO 16932 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:16:06.563+02:00  INFO 19764 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 19764 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T16:16:06.565+02:00  INFO 19764 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T16:16:06.965+02:00  INFO 19764 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T16:16:07.000+02:00  INFO 19764 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 2 JPA repository interfaces.
+2026-04-22T16:16:07.346+02:00  INFO 19764 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T16:16:07.354+02:00  INFO 19764 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T16:16:07.355+02:00  INFO 19764 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T16:16:07.388+02:00  INFO 19764 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 795 ms
+2026-04-22T16:16:07.491+02:00  INFO 19764 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T16:16:07.522+02:00  INFO 19764 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T16:16:07.825+02:00  INFO 19764 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T16:16:07.848+02:00  INFO 19764 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T16:16:08.027+02:00  INFO 19764 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@be1c08a
+2026-04-22T16:16:08.028+02:00  INFO 19764 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T16:16:08.065+02:00  WARN 19764 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T16:16:08.079+02:00  INFO 19764 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T16:16:08.668+02:00  INFO 19764 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T16:16:08.714+02:00  INFO 19764 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T16:16:08.754+02:00  INFO 19764 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T16:16:09.174+02:00  WARN 19764 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T16:16:09.216+02:00  INFO 19764 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T16:16:09.492+02:00  INFO 19764 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T16:16:09.496+02:00  INFO 19764 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.24 seconds (process running for 3.5)
+2026-04-22T16:16:09.504+02:00  INFO 19764 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T16:16:09.569+02:00  INFO 19764 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T16:16:14.271+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T16:16:14.272+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T16:16:14.273+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-22T16:16:14.310+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:16:14.554+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:16:23.137+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-5] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:16:23.165+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-7] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:16:28.698+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-9] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:16:28.727+02:00  INFO 19764 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:22:32.152+02:00  INFO 21096 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 21096 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T16:22:32.155+02:00  INFO 21096 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T16:22:32.586+02:00  INFO 21096 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T16:22:32.624+02:00  INFO 21096 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 2 JPA repository interfaces.
+2026-04-22T16:22:32.999+02:00  INFO 21096 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T16:22:33.007+02:00  INFO 21096 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T16:22:33.008+02:00  INFO 21096 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T16:22:33.048+02:00  INFO 21096 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 862 ms
+2026-04-22T16:22:33.165+02:00  INFO 21096 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T16:22:33.201+02:00  INFO 21096 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T16:22:33.515+02:00  INFO 21096 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T16:22:33.539+02:00  INFO 21096 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T16:22:33.745+02:00  INFO 21096 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@be1c08a
+2026-04-22T16:22:33.747+02:00  INFO 21096 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T16:22:33.783+02:00  WARN 21096 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T16:22:33.796+02:00  INFO 21096 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T16:22:34.436+02:00  INFO 21096 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T16:22:34.488+02:00  INFO 21096 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T16:22:34.535+02:00  INFO 21096 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T16:22:35.001+02:00  WARN 21096 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T16:22:35.054+02:00  INFO 21096 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T16:22:35.350+02:00  INFO 21096 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T16:22:35.355+02:00  INFO 21096 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.518 seconds (process running for 3.787)
+2026-04-22T16:22:35.365+02:00  INFO 21096 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T16:22:35.438+02:00  INFO 21096 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T16:22:40.338+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T16:22:40.338+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T16:22:40.340+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-04-22T16:22:40.377+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:22:40.656+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-3] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:22:44.508+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-7] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:22:44.533+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:22:57.450+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-8] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:22:57.476+02:00  INFO 21096 --- [paymybuddy] [http-nio-8080-exec-10] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:25:29.410+02:00  INFO 25572 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 25572 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T16:25:29.412+02:00  INFO 25572 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T16:25:29.804+02:00  INFO 25572 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T16:25:29.837+02:00  INFO 25572 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 2 JPA repository interfaces.
+2026-04-22T16:25:30.168+02:00  INFO 25572 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T16:25:30.177+02:00  INFO 25572 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T16:25:30.178+02:00  INFO 25572 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T16:25:30.214+02:00  INFO 25572 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 775 ms
+2026-04-22T16:25:30.319+02:00  INFO 25572 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T16:25:30.352+02:00  INFO 25572 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T16:25:30.639+02:00  INFO 25572 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T16:25:30.659+02:00  INFO 25572 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T16:25:30.841+02:00  INFO 25572 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10408ea
+2026-04-22T16:25:30.842+02:00  INFO 25572 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T16:25:30.880+02:00  WARN 25572 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T16:25:30.892+02:00  INFO 25572 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T16:25:31.477+02:00  INFO 25572 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T16:25:31.527+02:00  INFO 25572 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T16:25:31.566+02:00  INFO 25572 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T16:25:31.987+02:00  WARN 25572 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T16:25:32.025+02:00  INFO 25572 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T16:25:32.283+02:00  INFO 25572 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T16:25:32.287+02:00  INFO 25572 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.164 seconds (process running for 3.419)
+2026-04-22T16:25:32.295+02:00  INFO 25572 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T16:25:32.363+02:00  INFO 25572 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T16:25:36.633+02:00  INFO 25572 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T16:25:36.634+02:00  INFO 25572 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T16:25:36.636+02:00  INFO 25572 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-22T16:25:36.663+02:00  INFO 25572 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:25:36.905+02:00  INFO 25572 --- [paymybuddy] [http-nio-8080-exec-5] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:25:38.673+02:00  INFO 25572 --- [paymybuddy] [http-nio-8080-exec-9] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:25:38.697+02:00  INFO 25572 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:31:40.993+02:00  INFO 3112 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 3112 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T16:31:40.994+02:00  INFO 3112 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T16:31:41.385+02:00  INFO 3112 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T16:31:41.418+02:00  INFO 3112 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 2 JPA repository interfaces.
+2026-04-22T16:31:41.765+02:00  INFO 3112 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T16:31:41.776+02:00  INFO 3112 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T16:31:41.776+02:00  INFO 3112 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T16:31:41.813+02:00  INFO 3112 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 789 ms
+2026-04-22T16:31:41.916+02:00  INFO 3112 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T16:31:41.949+02:00  INFO 3112 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T16:31:42.260+02:00  INFO 3112 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T16:31:42.282+02:00  INFO 3112 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T16:31:42.453+02:00  INFO 3112 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@be1c08a
+2026-04-22T16:31:42.454+02:00  INFO 3112 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T16:31:42.488+02:00  WARN 3112 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T16:31:42.502+02:00  INFO 3112 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T16:31:43.092+02:00  INFO 3112 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T16:31:43.137+02:00  INFO 3112 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T16:31:43.176+02:00  INFO 3112 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T16:31:43.592+02:00  WARN 3112 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T16:31:43.632+02:00  INFO 3112 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T16:31:43.899+02:00  INFO 3112 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T16:31:43.903+02:00  INFO 3112 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.196 seconds (process running for 3.465)
+2026-04-22T16:31:43.911+02:00  INFO 3112 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T16:31:43.977+02:00  INFO 3112 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T16:31:49.290+02:00  INFO 3112 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T16:31:49.290+02:00  INFO 3112 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T16:31:49.291+02:00  INFO 3112 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-22T16:31:49.326+02:00  INFO 3112 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:43:16.555+02:00  INFO 27016 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 27016 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T16:43:16.557+02:00  INFO 27016 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T16:43:16.960+02:00  INFO 27016 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T16:43:16.994+02:00  INFO 27016 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 2 JPA repository interfaces.
+2026-04-22T16:43:17.342+02:00  INFO 27016 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T16:43:17.351+02:00  INFO 27016 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T16:43:17.351+02:00  INFO 27016 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T16:43:17.385+02:00  INFO 27016 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 799 ms
+2026-04-22T16:43:17.490+02:00  INFO 27016 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T16:43:17.524+02:00  INFO 27016 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T16:43:17.841+02:00  INFO 27016 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T16:43:17.864+02:00  INFO 27016 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T16:43:18.054+02:00  INFO 27016 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3ba5c4dd
+2026-04-22T16:43:18.056+02:00  INFO 27016 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T16:43:18.096+02:00  WARN 27016 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T16:43:18.108+02:00  INFO 27016 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T16:43:18.690+02:00  INFO 27016 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T16:43:18.743+02:00  INFO 27016 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T16:43:18.789+02:00  INFO 27016 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T16:43:19.395+02:00  WARN 27016 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T16:43:19.439+02:00  INFO 27016 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T16:43:19.721+02:00  INFO 27016 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T16:43:19.725+02:00  INFO 27016 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.466 seconds (process running for 3.734)
+2026-04-22T16:43:19.734+02:00  INFO 27016 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T16:43:19.806+02:00  INFO 27016 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T16:43:22.839+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T16:43:22.840+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T16:43:22.842+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-04-22T16:43:22.885+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:46:14.963+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-6] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:46:29.798+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-7] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:46:29.827+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-5] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:47:17.583+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:47:17.614+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-4] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:47:23.342+02:00  INFO 27016 --- [paymybuddy] [http-nio-8080-exec-10] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:48:33.180+02:00  INFO 14172 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 14172 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T16:48:33.182+02:00  INFO 14172 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T16:48:33.563+02:00  INFO 14172 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T16:48:33.595+02:00  INFO 14172 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 2 JPA repository interfaces.
+2026-04-22T16:48:33.924+02:00  INFO 14172 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T16:48:33.933+02:00  INFO 14172 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T16:48:33.933+02:00  INFO 14172 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T16:48:33.964+02:00  INFO 14172 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 756 ms
+2026-04-22T16:48:34.066+02:00  INFO 14172 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T16:48:34.097+02:00  INFO 14172 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T16:48:34.388+02:00  INFO 14172 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T16:48:34.410+02:00  INFO 14172 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T16:48:34.582+02:00  INFO 14172 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10408ea
+2026-04-22T16:48:34.584+02:00  INFO 14172 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T16:48:34.620+02:00  WARN 14172 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T16:48:34.634+02:00  INFO 14172 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T16:48:35.214+02:00  INFO 14172 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T16:48:35.259+02:00  INFO 14172 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T16:48:35.296+02:00  INFO 14172 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T16:48:35.702+02:00  WARN 14172 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T16:48:35.741+02:00  INFO 14172 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T16:48:36.000+02:00  INFO 14172 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T16:48:36.005+02:00  INFO 14172 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.113 seconds (process running for 3.368)
+2026-04-22T16:48:36.014+02:00  INFO 14172 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T16:48:36.079+02:00  INFO 14172 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T16:48:41.411+02:00  INFO 14172 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T16:48:41.412+02:00  INFO 14172 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T16:48:41.412+02:00  INFO 14172 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-04-22T16:48:41.443+02:00  INFO 14172 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T16:52:21.844+02:00  INFO 23036 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 23036 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T16:52:21.846+02:00  INFO 23036 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T16:52:22.261+02:00  INFO 23036 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T16:52:22.297+02:00  INFO 23036 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 2 JPA repository interfaces.
+2026-04-22T16:52:22.663+02:00  INFO 23036 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T16:52:22.671+02:00  INFO 23036 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T16:52:22.672+02:00  INFO 23036 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T16:52:22.707+02:00  INFO 23036 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 829 ms
+2026-04-22T16:52:22.812+02:00  INFO 23036 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T16:52:22.851+02:00  INFO 23036 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T16:52:23.165+02:00  INFO 23036 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T16:52:23.188+02:00  INFO 23036 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T16:52:23.382+02:00  INFO 23036 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@16e5344c
+2026-04-22T16:52:23.384+02:00  INFO 23036 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T16:52:23.420+02:00  WARN 23036 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T16:52:23.433+02:00  INFO 23036 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T16:52:24.061+02:00  INFO 23036 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T16:52:24.118+02:00  INFO 23036 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T16:52:24.168+02:00  INFO 23036 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T16:52:24.646+02:00  WARN 23036 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T16:52:24.693+02:00  INFO 23036 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T16:52:24.987+02:00  INFO 23036 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T16:52:24.992+02:00  INFO 23036 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.458 seconds (process running for 3.727)
+2026-04-22T16:52:25.001+02:00  INFO 23036 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T16:52:25.085+02:00  INFO 23036 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T16:52:37.536+02:00  INFO 23036 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T16:52:37.536+02:00  INFO 23036 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T16:52:37.537+02:00  INFO 23036 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-04-22T16:52:37.562+02:00  INFO 23036 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion
+2026-04-22T18:18:35.753+02:00  INFO 29636 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Starting PaymybuddyApplication using Java 17.0.17 with PID 29636 (C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy\target\classes started by fiona in C:\Users\fiona\Documents\Dev\01_FORMATION_OC\roger_fiona_PayMyBuddy)
+2026-04-22T18:18:35.755+02:00  INFO 29636 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-04-22T18:18:36.147+02:00  INFO 29636 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-22T18:18:36.177+02:00  INFO 29636 --- [paymybuddy] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 2 JPA repository interfaces.
+2026-04-22T18:18:36.502+02:00  INFO 29636 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-04-22T18:18:36.510+02:00  INFO 29636 --- [paymybuddy] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-22T18:18:36.510+02:00  INFO 29636 --- [paymybuddy] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-04-22T18:18:36.545+02:00  INFO 29636 --- [paymybuddy] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 761 ms
+2026-04-22T18:18:36.643+02:00  INFO 29636 --- [paymybuddy] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-22T18:18:36.675+02:00  INFO 29636 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-22T18:18:36.960+02:00  INFO 29636 --- [paymybuddy] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-22T18:18:36.980+02:00  INFO 29636 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-22T18:18:37.166+02:00  INFO 29636 --- [paymybuddy] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@10408ea
+2026-04-22T18:18:37.167+02:00  INFO 29636 --- [paymybuddy] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-22T18:18:37.208+02:00  WARN 29636 --- [paymybuddy] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-22T18:18:37.221+02:00  INFO 29636 --- [paymybuddy] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/paymybuddy?serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.45
+	Default catalog/schema: paymybuddy/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-22T18:18:37.805+02:00  INFO 29636 --- [paymybuddy] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-22T18:18:37.851+02:00  INFO 29636 --- [paymybuddy] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-22T18:18:37.893+02:00  INFO 29636 --- [paymybuddy] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-22T18:18:38.319+02:00  WARN 29636 --- [paymybuddy] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-22T18:18:38.361+02:00  INFO 29636 --- [paymybuddy] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-04-22T18:18:38.644+02:00  INFO 29636 --- [paymybuddy] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-04-22T18:18:38.648+02:00  INFO 29636 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : Started PaymybuddyApplication in 3.189 seconds (process running for 3.446)
+2026-04-22T18:18:38.656+02:00  INFO 29636 --- [paymybuddy] [main] c.o.paymybuddy.service.impl.UserService  : GET_USERS - Récupération de tous les utilisateurs
+2026-04-22T18:18:38.723+02:00  INFO 29636 --- [paymybuddy] [main] c.o.paymybuddy.PaymybuddyApplication     : APPLICATION_STARTED - L'application Pay My Buddy est démarrée
+2026-04-22T18:18:42.128+02:00  INFO 29636 --- [paymybuddy] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-22T18:18:42.128+02:00  INFO 29636 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-22T18:18:42.130+02:00  INFO 29636 --- [paymybuddy] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-22T18:18:42.158+02:00  INFO 29636 --- [paymybuddy] [http-nio-8080-exec-1] c.o.p.controller.ViewController          : GET_LOGIN_PAGE - Affichage de la page de connexion

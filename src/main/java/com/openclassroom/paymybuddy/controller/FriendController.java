@@ -1,6 +1,7 @@
 package com.openclassroom.paymybuddy.controller;
 
 import com.openclassroom.paymybuddy.service.IUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ Contrôleur chargé de l'affichage et de la gestion des amis.
 
 <p> Permet à l'utilisateur d'ajouter un ami. </p>
  */
+@Slf4j
 @Controller
 public class FriendController {
 
@@ -41,12 +43,15 @@ public class FriendController {
      */
     @PostMapping("/friends/add")
     public String addFriend(@RequestParam String email, Authentication authentication, RedirectAttributes redirectAttributes) {
+
         String currentUserEmail = authentication.getName();
+        log.info("POST_FRIENDS_ADD_INIT - Appel de l'endpoint /friends/add pour l'utilisateur={}", currentUserEmail);
 
         userService.addFriend(currentUserEmail, email);
 
         redirectAttributes.addFlashAttribute("successMessage", "Relation ajoutée");
 
+        log.info("POST_FRIENDS_ADD_SUCCESS - Relation {} ajoutée par l'utilisateur={}", email, currentUserEmail);
         return "redirect:/friends";
     }
 
@@ -57,6 +62,7 @@ public class FriendController {
      */
     @GetMapping("/friends")
     public String showFriendPage() {
+        log.info("GET_FRIENDS_PAGE_INIT - Affichage de la page d'ajout d'amis (friends)");
         return "friends";
     }
 }

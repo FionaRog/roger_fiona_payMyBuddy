@@ -54,15 +54,7 @@ public interface IUserService {
  */
     void addFriend(String userEmail, String friendEmail);
 
-    /**
- * Récupère un utilisateur avec sa liste d'amis à partir de son email.
- *
- * @param email l'email de l'utilisateur recherché (non {@code null})
- * @return l'entité {@link User} correspondante, incluant sa liste d'amis
- */
-    User getUserWithFriends(String email);
-
-    /**
+   /**
  * Récupère la liste des amis (utilisateurs) d'un utilisateur donné par son email.
  *
  * @param email l'email de l'utilisateur dont on souhaite obtenir la liste d'amis (non {@code null})
