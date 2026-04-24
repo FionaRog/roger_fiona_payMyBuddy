@@ -3,34 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscription - Pay My Buddy</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="auth-page">
 
-<header>
-    <h1 >
-        <a th:href="@{/login}">Pay My Buddy</a>
-    </h1>
-</header>
+<div class="auth-rectangle">
+    <header class="logo">
+        <p>
+            <a th:href="@{/login}">Pay My Buddy</a>
+        <p>
+    </header>
 
 <main>
 <form th:action="@{/register}" method="post">
     <div>
-        <input type="text" id="username" name="username" placeholder="Username" maxlength="100" required>
+        <input class="register-username" type="text" id="username" name="username" placeholder="Username" maxlength="100" required>
     </div>
 
     <div>
-        <input type="email" id="email" name="email" placeholder="Mail" maxlength="100" required>
+        <input class="register-mail" type="email" id="email" name="email" placeholder="Mail" maxlength="100" required>
     </div>
 
     <div>
-        <input type="password" id="password" name="password" placeholder="Mot de passe" maxlength="255" required>
+        <input class="register-password" type="password" id="password" name="password" placeholder="Mot de passe" maxlength="255" required>
     </div>
 
     <div>
-        <button type="submit">S'inscrire</button>
+        <button class="login-button" type="submit">S'inscrire</button>
     </div>
 </form>
 </main>
-
+</div>
 </body>
 </html>

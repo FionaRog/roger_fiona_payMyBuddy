@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Connexion - Pay My Buddy</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
-<body>
 
-<header>
-    <h1 >
-        <a th:href="@{/login}">Pay My Buddy</a>
-    </h1>
-</header>
+
+<body class="auth-page">
+
+<div class="auth-rectangle">
+    <header class="logo">
+        <p>
+            <a th:href="@{/login}">Pay My Buddy</a>
+        <p>
+    </header>
+
 <main>
-    <p th:if="${param.error}">Email ou mot de pase incorrect.</p>
-    <p th:if="${param.logout}">Déconnecté.e</p>
-    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+    <p class="alert alert-error" th:if="${param.error}">Email ou mot de pase incorrect.</p>
+    <p class="alert alert-success" th:if="${param.logout}">Déconnecté.e</p>
+    <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
 
-    <form th:action="@{/login}" method="post">
+    <form class="auth" th:action="@{/login}" method="post">
       <div>
-            <input type="email" name="email" id="email" placeholder="Mail" required>
+            <input class="login-mail" type="email" name="email" id="email" placeholder="Mail" required>
         </div>
 
         <div>
-            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+            <input class="login-password" type="password" name="password" id="password" placeholder="Mot de passe" required>
         </div>
 
         <div>
-            <button type="submit">Se connecter</button>
+            <button class="login-button" type="submit">Se connecter</button>
         </div>
     </form>
 </main>
+</div>
 
 </body>
 </html>
