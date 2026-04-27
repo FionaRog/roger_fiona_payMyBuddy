@@ -1,14 +1,8 @@
 /*
 Barre de nav :
-    - "Pay my buddy" aligner à gauche ? ok avec margin
-    -"Se déconnecter" créer une page logout (car généré spring boot) ou faire un bouton?
-
-transaction : - filtre placement
-friends :  - flex de la page mais comment aligner ensuite proprement ?
-          -nommage ok ?
-profile: - idem que friends comment aligner le button
-         - param edit=true pour password = page pas en forme css
-
+    - "Pay my buddy" aligner ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â  gauche ? ok avec margin
+    -"Se dÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©connecter" crÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©er une page logout (car gÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©nÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©rÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â© spring boot) ou faire un bouton?
+    - ajouter hover , clique lien ou page sÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©lÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©ctionnÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©
 */
 *{
   font-family: "Roboto", sans-serif;
@@ -16,54 +10,70 @@ profile: - idem que friends comment aligner le button
 
 a{
     text-decoration:none;
+    color:black;
 }
-
 nav{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
+    font-size:1.4rem;
+    margin: 0 0 4%;
 }
 .accueil{
     padding: 1.5rem;
-    margin: 0.5rem 17rem 0.5rem 0.5rem;
+    margin: 0.5% 23% 0.5% 0.5%;
 }
 .element-nav{
     padding:1.5rem 1.5rem;
 }
-
+.en-cours{
+    color: rgba(32, 127, 238, 1);
+}
+.logout-button{
+    background: none;
+    border:none;
+    font: inherit;
+    color: inherit;
+}
+button{
+    cursor:pointer;
+}
 
 /* ------ LOGIN & REGISTER ----------------
 */
 
 .auth-page{
     display: flex;
+    flex-direction:column;
     justify-content: center;
     background: rgba(255, 255, 255, 1);
 }
-
 .auth-rectangle{
-    margin: 7rem;
-    flex-direction: column;
+    margin: 4rem 25rem;
+    padding: 1.5rem 2rem;
+    width: 20%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     background: rgba(217, 217, 217, 0);
     border: 1px solid rgba(0, 0, 0, 1);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-
 .logo {
     text-align: center;
-    margin:3rem 7rem 3rem;
-    padding: 0.50rem;
+    margin:2rem 0;
+    padding: 0.3rem;
     border-radius: 8px;
     background: rgba(246, 159, 29, 1);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
-
 .logo a{
     color: white;
     font-size: 1.3em;
 }
-
-.login-mail{
-    margin: 3rem 5rem 1rem;
+.entree-login{
+    margin: 1rem 0;
+    width:90%;
     padding: 0.50rem 1rem 0.50rem;
     font-size: 1.1em;
     border-radius: 8px;
@@ -71,19 +81,9 @@ nav{
     border: 1px solid rgba(224, 224, 224, 1);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
-
-.login-password {
-    margin: 1rem 5rem 3rem;
-    padding: 0.50rem 1rem 0.50rem;
-    font-size: 1.1em;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(224, 224, 224, 1);
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-   }
-
 .login-button {
-    margin:2rem 8rem 5rem;
+    margin:2rem 0;
+    width:100%;
     padding: 1rem;
     font-size: 1.3em;
     color: white;
@@ -102,7 +102,6 @@ nav{
     border: 1px solid rgba(224, 224, 224, 1);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
-
 .register-mail{
     margin: 1rem 5rem 1rem;
     padding: 0.50rem 1rem 0.50rem;
@@ -112,7 +111,6 @@ nav{
     border: 1px solid rgba(224, 224, 224, 1);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
-
 .register-password {
     margin: 1rem 5rem 2rem;
     padding: 0.50rem 1rem 0.50rem;
@@ -123,43 +121,46 @@ nav{
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
-.accueil{
-}
-
-nav{
-    margin: 0 0 4rem;
-}
-
 /* -------------TRANSACTION ---------------
 */
 .creer-transaction{
     display:flex;
     align-items: center;
-    justify-content:space-between;
-    margin: 0 2rem 7rem;
+    justify-content:space-around;
+    margin: 0 5% 7%;
 }
-
 .selecteur-relation{
-    width: 18rem;
-    height: 4rem;
-    padding: 1rem 1rem 1rem;
-    font-size: 1.1rem;
+    width: 30rem;
+    height: 5.2rem;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border: 1px solid rgba(224, 224, 224, 1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
 .description-transaction{
-    width: 18rem;
-    height: 3rem;
+    width: 30rem;
+    height: 4rem;
     padding: 0.5rem 0.5rem 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    border: 1px solid rgba(224, 224, 224, 1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
 .montant-transaction{
-    width: 4.5rem;
+    width: 7rem;
     height: 4rem;
     padding: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    border: 1px solid rgba(224, 224, 224, 1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
 .payer-button{
+    height: 5rem;
+    width:6rem;
     padding: 1.2rem;
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: white;
     border: none;
     border-radius: 8px;
@@ -169,39 +170,34 @@ nav{
 
 .mes-transactions{
     display:flex;
-    justify-content:space-between;
-    margin: 2rem 1rem 7rem;
+    justify-content: center;
+    margin: 1% 8% 6%;
     padding: 1rem 1rem 5rem;
-    border: 2px solid rgba(224, 224, 224, 1);
-
-}
-
-.bandeau-mes-transactions{
-}
-.ensemble-filtre
-{
+    border: 1px solid rgba(224, 224, 224, 1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
 .filtre{
-    width: 5rem;
-    height: 1.5rem;
+    width: 7rem;
+    height: 2rem;
+    font-size: 1.2rem;
 }
-
 .filtre-button{
+    width: 7rem;
+    height: 2rem;
+    font-size: 1.2rem;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
-
 .mes-transactions-titre{
     font-weight: bold;
 }
-
 table{
-    font-size:1.2rem;
+    font-size:1.3rem;
 }
-
 th{
-   padding: 2rem;
+   padding: 3rem;
 }
-
 td{
     padding: 2rem;
     border-top: 1px solid rgba(224, 224, 224, 1);
@@ -214,28 +210,33 @@ td{
     flex-direction:column;
     align-items: center;
 }
-
-.titre-relation{
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0rem 5rem;
+.form-relation{
+    display: flex;
+    align-items: flex-center;
+    gap: 1rem;
 }
-
 .chercher-relation{
+    display: flex;
+    flex-direction: column;
+}
+.titre-relation{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 2% 0;
 }
 .mail-relation{
-    width: 20rem;
-    height:2rem;
-    margin: 1rem 5rem 3rem;
+    width: 25rem;
+    height:3rem;
     padding: 0.50rem 1rem 0.50rem;
-    font-size: 1.1em;
+    font-size: 1.2em;
     border-radius: 8px;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(224, 224, 224, 1);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 .relation-button{
-    padding: 1.2rem;
+    padding: 1rem;
+    margin: 1rem;
     font-size: 1.3em;
     color: white;
     border: none;
@@ -249,10 +250,12 @@ td{
 .profile-page{
     display:flex;
     flex-direction:column;
-    align-items: center;
+    align-items: flex-start;
+    margin: 5% 25%;
 }
 .modifier-button{
-     padding: 1.1rem;
+    padding: 1.1rem;
+    margin:0 2%;
     font-size: 1.1em;
     color: white;
     border: none;
@@ -261,35 +264,33 @@ td{
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 .modif-profil{
-    width: 20rem;
+    width: 19rem;
     height:2rem;
     font-size: 1.1em;
-    padding: 0.50rem 1rem 0.50rem;
+    padding: 0.5rem 1rem 0.5rem;
     border-radius: 8px;
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(224, 224, 224, 1);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
-.modif-username{
-    font-size: 1.1em;
-    margin:1.5rem;
+.modif{
+    font-size: 1.2em;
+    margin:2%;
     }
-.modif-mail{
-    font-size: 1.1em;
-    margin:1.5rem;
-}
-.modif-password{
-    font-size: 1.1em;
-    margin:1.5rem;
+.label-profile{
+    margin:2.5% 3%;
+    font-weight:bold;
 }
 .solde-actuel{
-    font-size: 1.1em;
-    margin:1.5rem;
+    font-size: 1.2em;
+    font-weight:bold;
+    margin:2%;
 }
-.modif-solde{
-    font-size: 1.1em;
-    margin:1.5rem;
+.entree{
+    display: flex;
+    margin:1%;
 }
+
 
 .alert {
     margin: 1rem;

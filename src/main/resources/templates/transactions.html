@@ -10,23 +10,25 @@
 </head>
 
 <header>
-
     <nav>
         <p class="accueil">
             <a th:href="@{/transactions}">Pay My Buddy</a>
         </p>
-        <a class="element-nav" th:href="@{/transactions}">Transférer</a>
+        <a class="element-nav en-cours" th:href="@{/transactions}">Transférer</a>
         <a class="element-nav" th:href="@{/profile}">Profil</a>
         <a class="element-nav" th:href="@{/friends}">Ajouter relation</a>
-        <a class="element-nav" th:href="@{/logout}">Se déconnecter</a>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" class="element-nav logout-button">Se déconnecter</button>
+        </form>
     </nav>
 </header>
 
 <body>
 <main>
     <p th:if="${param.logout}">Déconnecté.e</p>
-    <p th:if="${successMessage}" th:text="${successMessage}"></p>
-    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+    <p class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+    <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
 
     <form class="creer-transaction" th:action="@{/transactions/add}" th:object="${transactionRequestDto}" method="post">
@@ -48,8 +50,7 @@
     </form>
 
     <div class="mes-transactions">
-        <div class="bandeau-mes-transactions"></div>
-    <form class="ensemble-filtre" th:action="@{/transactions}" method="get">
+    <form th:action="@{/transactions}" method="get">
         <select class="filtre" name="filter">
             <option value="all" th:selected="${selectedFilter == 'all'}">Toutes</option>
             <option value="sent" th:selected="${selectedFilter == 'sent'}">Envoyées</option>
@@ -57,6 +58,7 @@
         </select>
         <button class="filtre-button" type="submit">Filtrer</button>
     </form>
+
     <table>
         <caption class="mes-transactions-titre" th:switch="${selectedFilter}">
             <span th:case=" 'sent' "> Mes transactions envoyées</span>

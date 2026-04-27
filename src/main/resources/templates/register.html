@@ -18,7 +18,12 @@
     </header>
 
 <main>
-<form th:action="@{/register}" method="post">
+    <p class="alert alert-error" th:if="${param.error}">Email ou mot de pase incorrect.</p>
+    <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+    <p class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+
+
+    <form th:action="@{/register}" method="post">
     <div>
         <input class="register-username" type="text" id="username" name="username" placeholder="Username" maxlength="100" required>
     </div>

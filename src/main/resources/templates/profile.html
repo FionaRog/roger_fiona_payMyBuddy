@@ -10,60 +10,64 @@
 </head>
 
 <header>
-<nav>
-    <p class="accueil">
-        <a th:href="@{/transactions}">Pay My Buddy</a>
-    </p>
-    <a class="element-nav" th:href="@{/transactions}">Transférer</a>
-    <a class="element-nav" th:href="@{/profile}">Profil</a>
-    <a class="element-nav" th:href="@{/friends}">Ajouter relation</a>
-    <a class="element-nav" th:href="@{/logout}">Se déconnecter</a>
-</nav>
+    <nav>
+        <p class="accueil">
+            <a th:href="@{/transactions}">Pay My Buddy</a>
+        </p>
+        <a class="element-nav" th:href="@{/transactions}">Transférer</a>
+        <a class="element-nav en-cours" th:href="@{/profile}">Profil</a>
+        <a class="element-nav" th:href="@{/friends}">Ajouter relation</a>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" class="element-nav logout-button">Se déconnecter</button>
+        </form>
+    </nav>
 </header>
-<body class="profile-page">
+<body>
 <main>
     <p th:if="${param.logout}">Déconnecté.e</p>
-    <p th:if="${successMessage}" th:text="${successMessage}"></p>
-    <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+    <p class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></p>
+    <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
-
-    <section class="modif-username">
+    <div class="profile-page">
+    <section class="modif">
         <form th:action="@{/profile/username}" method="post">
-            <div>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" th:value="${username}" required>
-            </div>
+            <div class="entree">
+                <label class="label-profile" for="username">Username</label>
+                <input class="modif-profil" type="text" id="username" name="username" th:value="${username}" required>
+
             <button class="modifier-button" type="submit">Modifier</button>
+            </div>
         </form>
     </section>
 
-    <section class="modif-mail">
-        <div>
-            <label>Mail</label>
+    <section class="modif">
+        <div class="entree">
+            <label class="label-profile">Mail</label>
             <input class="modif-profil" type="email" name="email" th:value="${user.email}" readonly>
         </div>
     </section>
 
-    <section class="modif-password">
-        <div th:if="${param.editPassword == null}">
-            <label>Password</label>
+    <section class="modif">
+        <div class="entree" th:if="${param.editPassword == null}">
+            <label class="label-profile">Password</label>
             <input class="modif-profil" type="password" value="*******" readonly>
 
-            <a th:href="@{/profile(editPassword=true)}">Modifier</a>
+            <a class="modifier-button" th:href="@{/profile(editPassword=true)}">Modifier</a>
         </div>
 
-        <div th:if="${param.editPassword}">
+        <div class="entree" th:if="${param.editPassword}">
             <form th:action="@{/profile/password}" th:object="${updatePasswordRequestDto}" method="post">
-                 <div>
-                    <label for="currentPassword">Mot de passe actuel</label>
+                 <div class="entree">
+                    <label class="label-profile" for="currentPassword">Mot de passe actuel</label>
                     <input class="modif-profil" type="password" id="currentPassword" th:field="*{currentPassword}" placeholder="Mot de passe actuel" required/>
                 </div>
-                <div>
-                    <label for="newPassword">Nouveau mot de passe</label>
+                <div class="entree">
+                    <label class="label-profile" for="newPassword">Nouveau mot de passe</label>
                     <input class="modif-profil" type="password" id="newPassword" th:field="*{newPassword}" placeholder="Nouveau mot de passe" required/>
                 </div>
-                <div>
-                    <label for="confirmPassword">Confirmer mot de passe</label>
+                <div class="entree">
+                    <label class="label-profile" for="confirmPassword">Confirmer mot de passe</label>
                     <input class="modif-profil" type="password" id="confirmPassword" th:field="*{confirmPassword}" placeholder="Confirmer mot de passe" required/>
                 </div>
                 <button class="modifier-button" type="submit">Valider</button>
@@ -72,17 +76,20 @@
     </section>
 
     <section class="solde-actuel">
-        <label for="balance">Solde actuel :</label>
-        <p id="balance" th:text="${user.balance}"></p>
+        <div class="entree">
+            <label class="label-profile" for="balance">Solde actuel :</label>
+            <p id="balance" th:text="${user.balance}"></p>
+        </div>
     </section>
-    <section class="modif-solde">
+    <section class="modif">
         <form th:action="@{/profile/balance}" method="post">
-            <div>
-                <label for="updateBalance">Modifier le solde</label>
+            <div class="entree">
+                <label class="label-profile" for="updateBalance">Modifier le solde</label>
                 <input class="modif-profil" type="number" id="updateBalance" name="amount" step="0.01" placeholder="0.00" required>
+                <button class="modifier-button" type="submit">Modifier</button>
             </div>
-            <button class="modifier-button" type="submit">Modifier</button>
         </form>
+
     </section>
 
 </main>

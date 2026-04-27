@@ -57,6 +57,8 @@ public class SpringSecurityConfig {
                         .logout(logout -> logout
                                 .logoutUrl("/logout")
                                 .logoutSuccessUrl("/login?logout")
+                                .deleteCookies("JSESSIONID")
+                                .invalidateHttpSession(true)
                         )
                         .build();
     }
