@@ -1,5 +1,6 @@
 package com.openclassroom.paymybuddy.exception;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,12 +28,28 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BusinessException.class)
     public String handleBusinessException(BusinessException ex,
+                                          HttpServletRequest request,
                                           RedirectAttributes redirectAttributes) {
 
         log.info("BUSINESS_EXCEPTION_CAUGHT - Code={}, Message={}", ex.getErrorCode(), ex.getMessage());
 
         redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
-        return "redirect:/transactions";
+
+        String requestURI = request.getRequestURI();
+
+        if(requestURI.startsWith("/transactions")) {
+            return "redirect:/transactions";
+        }
+        if(requestURI.startsWith("/friends")) {
+            return "redirect:/friends";
+        }
+        if(requestURI.startsWith("/profile")) {
+            return "redirect:/profile";
+        }
+        if(requestURI.startsWith("/register")) {
+            return "redirect:/register";
+        }
+        return "redirect:/login";
     }
 
     /**
