@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  *
  * Expose les informations utiles à l'affichage d'une transaction :
  * le pseudo de l'expéditeur et du destinataire, la description,
- * le montant et la date de transaction.
+ * le montant, les frais et la date de transaction.
  */
 @Getter
 @Setter
@@ -35,6 +35,11 @@ public class TransactionResponseDto {
      * Montant de la transaction.
      */
     private double amount;
+
+    /**
+     * Montant des frais prélevés par PayMyBuddy.
+     */
+    private double fee;
 
     /**
      * Date et heure de la transaction.

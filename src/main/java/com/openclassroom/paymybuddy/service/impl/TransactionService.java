@@ -88,15 +88,18 @@ public class TransactionService implements ITransactionService {
 
         double amount = requestDto.getAmount();
 
+        double fee = amount * 0.05;
+        double totalAmount = amount + fee;
+
         if(amount <= 0 ) {
             log.warn("ADD_TRANSACTION_INVALID_AMOUNT - Montant de la transaction {} invalide (email={})",
                     amount, senderEmail);
             throw new BusinessException("INVALID_TRANSACTION", "Le montant doit être supérieur à 0.00");
         }
 
-        if (sender.getBalance() < amount) {
-            log.warn("ADD_TRANSACTION_INVALID_BALANCE - Solde insuffisant pour l'expéditeur {} : solde={}, montant={}",
-                    senderEmail, sender.getBalance(), amount);
+        if (sender.getBalance() < totalAmount) {
+            log.warn("ADD_TRANSACTION_INVALID_BALANCE - Solde insuffisant pour l'expéditeur {} : solde={}, montant={}, frais={}, total={}",
+                    senderEmail, sender.getBalance(),amount, fee, totalAmount);
             throw new BusinessException("INVALID_TRANSACTION", "Solde insuffisant");
         }
 
@@ -113,16 +116,17 @@ public class TransactionService implements ITransactionService {
             throw new BusinessException("INVALID_TRANSACTION","Le destinataire doit être dans la liste de relations");
         }
 
-        sender.setBalance(sender.getBalance() - amount);
+        sender.setBalance(sender.getBalance() - totalAmount);
         receiver.setBalance(receiver.getBalance() + amount);
-        log.debug("ADD_TRANSACTION_BALANCE_UPDATED - Soldes mis à jour pour l'expéditeur {} et le destinataire {}, montant={}",
-                senderEmail, receiver.getEmail(), amount);
+        log.debug("ADD_TRANSACTION_BALANCE_UPDATED - Soldes mis à jour pour l'expéditeur {} et le destinataire {}",
+                senderEmail, receiver.getEmail());
 
         Transaction transaction = transactionMapper.toEntity(requestDto, sender, receiver);
+        transaction.setFee(fee);
         Transaction savedTransaction = transactionRepository.save(transaction);
 
-        log.info("ADD_TRANSACTION_SUCCESS - Transaction de {} vers {} créée par {}, id={}",
-                amount, receiver.getEmail(), senderEmail, savedTransaction.getTransactionId());
+        log.info("ADD_TRANSACTION_SUCCESS - Transaction de {} plus frais de {} vers {} créée par {}, id={}",
+                amount,fee, receiver.getEmail(), senderEmail, savedTransaction.getTransactionId());
         return transactionMapper.toDto(savedTransaction);
     }
 

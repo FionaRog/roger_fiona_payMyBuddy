@@ -71,6 +71,7 @@
             <th>Destinataire</th>
             <th>Description</th>
             <th>Montant</th>
+            <th>Frais</th>
             <th>Date</th>
         </tr>
         </thead>
@@ -79,8 +80,9 @@
             <td th:text="${transaction.senderUsername}"></td>
             <td th:text="${transaction.receiverUsername}"></td>
             <td th:text="${transaction.description}"></td>
-            <td th:text="${transaction.amount}"></td>
-            <td th:text="${transaction.dateTransaction}"></td>
+            <td th:text="${#numbers.formatDecimal(transaction.amount, 1, 2)} + ' €'"></td>
+            <td th:text="${#numbers.formatDecimal(transaction.fee, 1, 2)} + ' €'"></td>
+            <td th:text="${#temporals.format(transaction.dateTransaction, 'dd/MM/yyyy HH:mm')}"></td>
         </tr>
         </tbody>
     </table>

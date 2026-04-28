@@ -10,9 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 //Supprimer getUsers?
-//"Les identifiants et mots de passe doivent être référencés de manière sécurisée, sans apparaître en clair dans le code."
 //v1 ajout
-//Gestion des exceptions côté front sur /transaction ? Ou modifier les controller pour affichage sur chaque page
 /**
  * Classe principale de l'application Pay My Buddy.
  *

@@ -78,20 +78,27 @@
     <section class="solde-actuel">
         <div class="entree">
             <label class="label-profile" for="balance">Solde actuel :</label>
-            <p id="balance" th:text="${user.balance}"></p>
+            <p id="balance" th:text="${#numbers.formatDecimal(user.balance, 1, 2)} +' €'"></p>
         </div>
     </section>
     <section class="modif">
-        <form th:action="@{/profile/balance}" method="post">
+        <form th:action="@{/profile/deposit}" method="post">
             <div class="entree">
-                <label class="label-profile" for="updateBalance">Modifier le solde</label>
-                <input class="modif-profil" type="number" id="updateBalance" name="amount" step="0.01" placeholder="0.00" required>
-                <button class="modifier-button" type="submit">Modifier</button>
+                <label class="label-profile" for="depositAmount">Déposer de l'argent</label>
+                <input class="modif-profil" type="number" id="depositAmount" name="amount" step="0.01" min="0.01" placeholder="0.00" required>
+                <button class="modifier-button" type="submit">Déposer</button>
             </div>
         </form>
-
     </section>
-
+    <section class="modif">
+        <form th:action="@{/profile/withdraw}" method="post">
+            <div class="entree">
+                <label class="label-profile" for="withdrawAmount">Retirer de l'argent</label>
+                <input class="modif-profil" type="number" id="withdrawAmount" name="amount" step="0.01" min="0.01" placeholder="0.00" required>
+                <button class="modifier-button" type="submit">Retirer</button>
+            </div>
+        </form>
+      </section>
 </main>
 
 </body>

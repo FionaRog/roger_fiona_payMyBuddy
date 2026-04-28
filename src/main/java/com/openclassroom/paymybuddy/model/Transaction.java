@@ -60,6 +60,13 @@ public class Transaction {
     private double amount;
 
     /**
+     * Montant prélevé par PayMyBuddy lors de chaque transaction.
+     * Correspond à la colonne {@code fee}
+     */
+    @Column(nullable = false)
+    private double fee=0.00;
+
+    /**
      * Date et heure auxquelles la transaction est effectuée, ne peut être nulle.
      * Correspond à la colonne {@code date_transacation}.
      */
