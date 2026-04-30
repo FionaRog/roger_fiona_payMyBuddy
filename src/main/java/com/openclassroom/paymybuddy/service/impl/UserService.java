@@ -33,25 +33,18 @@ import java.util.List;
 @Slf4j
 @Service
 public class UserService implements IUserService {
-    /**
-     * Repository permettant la persistance et la récupération des utilisateurs.
-     */
-    @Autowired
-    private UserRepository userRepository;
 
-    /**
-     * Encodeur de mot de passe utilisé pour sécuriser les mots de passe avant sauvegarde en base.
-     */
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
 
-    /**
-     * Mapper permettant la conversion entre l'entité {@link User} et le
-     * DTO {@link UserResponseDto}.
-     */
-    @Autowired
-    private UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
+    private final UserMapper userMapper;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.userMapper = userMapper;
+    }
     // a supprimer ?
     /**
      * Récupère tout les utilisateurs présents en base de données.

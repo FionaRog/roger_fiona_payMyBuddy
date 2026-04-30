@@ -34,24 +34,18 @@ import java.util.List;
 @Slf4j
 @Service
 public class TransactionService implements ITransactionService {
-    /**
-     * Repository permettant la persistance et la récupération des transactions.
-     */
-    @Autowired
-    private TransactionRepository transactionRepository;
 
-    /**
-     * Repository permettant la récupération des utilisateurs par leur email.
-     */
-    @Autowired
-    private UserRepository userRepository;
+    private final TransactionRepository transactionRepository;
 
-    /**
-     * Mapper permettant une conversion entre les entités {@link Transaction} et
-     * les DTOs {@link TransactionRequestDto} / {@link TransactionResponseDto}.
-     */
-    @Autowired
-    private TransactionMapper transactionMapper;
+    private final UserRepository userRepository;
+
+    private final TransactionMapper transactionMapper;
+
+    public TransactionService(TransactionRepository transactionRepository, UserRepository userRepository, TransactionMapper transactionMapper) {
+        this.transactionRepository = transactionRepository;
+        this.userRepository = userRepository;
+        this.transactionMapper = transactionMapper;
+    }
 
 
     /**

@@ -23,12 +23,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BalanceService implements IBalanceService {
 
-    /**
-     * Repository permettant la récupération et la mise à jour des utilisateurs
-     * (y compris leur solde).
-     */
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public BalanceService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     /**
      * Effectue un dépôt sur le solde d'un utilisateur.

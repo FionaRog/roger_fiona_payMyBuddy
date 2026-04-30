@@ -21,12 +21,11 @@ import java.util.List;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    /**
-     * Repository permettant la récupération des utilisateurs par leur email.
-     * Utilisé pour charger l'utilisateur à partir du nom d'utilisateur (email)
-     */
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     /**
      * Charge un utilisateur à partir de son email et retourne un objet {@link UserDetails}
