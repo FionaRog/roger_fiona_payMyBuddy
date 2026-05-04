@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="fr">
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -22,17 +23,22 @@
     <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
     <p class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></p>
 
+    <h1 class="invisible">S'inscrire à Pay My Buddy</h1>
 
-    <form th:action="@{/register}" method="post">
+    <label for="s'inscrire" class="invisible">S'inscrire</label>
+    <form th:action="@{/register}" id="s'inscrire" method="post">
     <div>
+        <label for="username" class="invisible">Username</label>
         <input class="register-username" type="text" id="username" name="username" placeholder="Username" maxlength="100" required>
     </div>
 
     <div>
+        <label for="email" class="invisible">Adresse email</label>
         <input class="register-mail" type="email" id="email" name="email" placeholder="Mail" maxlength="100" required>
     </div>
 
     <div>
+        <label for="password" class="invisible">Mot de Passe</label>
         <input class="register-password" type="password" id="password" name="password" placeholder="Mot de passe" maxlength="255" required>
     </div>
 

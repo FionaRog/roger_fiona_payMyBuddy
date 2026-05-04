@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Relations - Pay My Buddy</title>
@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 
+<body>
 <header>
     <nav>
         <p class="accueil">
@@ -24,11 +25,12 @@
     </nav>
 </header>
 
-<body>
 <main>
     <p th:if="${param.logout}">Déconnecté.e</p>
     <p class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></p>
     <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+    <h1 class="invisible">Mes relations</h1>
 
     <div class="relation-page">
     <form th:action="@{/friends/add}" method="post">

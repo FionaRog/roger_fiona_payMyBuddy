@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="fr">
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -24,13 +25,17 @@
     <p class="alert alert-success" th:if="${param.logout}">Déconnecté.e</p>
     <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
+    <h1 class="invisible">Connexion à Pay My Buddy</h1>
 
-    <form class="auth" th:action="@{/login}" method="post">
+    <label for="se-connecter" class="invisible">Se connecter</label>
+    <form id="se-connecter" class="auth" th:action="@{/login}" method="post">
       <div>
+            <label for="email" class="invisible">Adresse email</label>
             <input class="entree-login" type="email" name="email" id="email" placeholder="Mail" required>
         </div>
 
         <div>
+            <label for="password" class="invisible">Mot de passe</label>
             <input class="entree-login" type="password" name="password" id="password" placeholder="Mot de passe" required>
         </div>
 

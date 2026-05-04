@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Transactions - Pay My Buddy</title>
@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 
+<body>
 <header>
     <nav>
         <p class="accueil">
@@ -24,25 +25,29 @@
     </nav>
 </header>
 
-<body>
+
 <main>
     <p th:if="${param.logout}">Déconnecté.e</p>
     <p class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></p>
     <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
 
+    <h1 class="invisible">Transactions</h1>
 
     <form class="creer-transaction" th:action="@{/transactions/add}" th:object="${transactionRequestDto}" method="post">
         <div>
-            <select class="selecteur-relation" th:field="*{receiverEmail}" required>
+            <label for="selectionner-relation" class="invisible">Sélectionner une relation</label>
+            <select class="selecteur-relation" id="selectionner-relation" th:field="*{receiverEmail}" required>
                 <option value="">Sélectionner une relation</option>
                 <option th:each="friend : ${friends}" th:value="${friend.email}" th:text="${friend.username}"></option>
             </select>
         </div>
         <div>
-             <input class="description-transaction" type="text"  th:field="*{description}" placeholder="Description" maxlength="100">
+           <label for="description-transaction" class="invisible">Description de la transaction</label>
+             <input class="description-transaction" id="description-transaction" type="text"  th:field="*{description}" placeholder="Description" maxlength="100">
         </div>
          <div>
-            <input class="montant-transaction" type="number" th:field="*{amount}" placeholder="0" step="0.01" min="0.01" required> </div>
+             <label for="montant-transaction" class="invisible">Montant de la transaction</label>
+            <input class="montant-transaction" id="montant-transaction" type="number" th:field="*{amount}" placeholder="0" step="0.01" min="0.01" required> </div>
         </div>
         <div>
              <button class="payer-button" type="submit">Payer</button>
@@ -51,7 +56,8 @@
 
     <div class="mes-transactions">
     <form th:action="@{/transactions}" method="get">
-        <select class="filtre" name="filter">
+        <label for="filtre-transaction" class="invisible">Filtrer les transactions</label>
+        <select class="filtre" id="filtre-transaction" name="filter">
             <option value="all" th:selected="${selectedFilter == 'all'}">Toutes</option>
             <option value="sent" th:selected="${selectedFilter == 'sent'}">Envoyées</option>
             <option value="received" th:selected="${selectedFilter == 'received'}">Reçues</option>
