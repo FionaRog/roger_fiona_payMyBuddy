@@ -52,7 +52,7 @@ public class RegisterController {
 
         User user = new User();
         user.setEmail(email);
-        user.setPassword(passwordEncoder.encode(password));
+        user.setPassword(password);
         user.setUsername(username);
         user.setBalance(0.0);
 
