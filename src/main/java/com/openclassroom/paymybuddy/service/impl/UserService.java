@@ -8,7 +8,6 @@ import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.repository.UserRepository;
 import com.openclassroom.paymybuddy.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,7 +44,6 @@ public class UserService implements IUserService {
         this.passwordEncoder = passwordEncoder;
         this.userMapper = userMapper;
     }
-    // a supprimer ?
     /**
      * Récupère tout les utilisateurs présents en base de données.
      *
@@ -84,7 +82,7 @@ public class UserService implements IUserService {
      * @return une liste de {@link User} représentant les amis de l'utilisateur
      * @throws BusinessException si aucun utilisateur n'est trouvé avec cet email
      */
-    public List<User> getFriendUsernames(String email) {
+    public List<User> getFriends(String email) {
         log.info("GET_FRIENDS_LIST - Récupération de la liste des amis pour l'utilisateur email={}", email);
         User user = userRepository.findByEmailWithFriends(email)
                 .orElseThrow(() -> new BusinessException("USER_NOT_FOUND","Utilisateur introuvable"));
@@ -149,7 +147,7 @@ public class UserService implements IUserService {
             throw new BusinessException("INVALID_OPERATION", "Vous ne pouvez vous ajouter vous-même");
         }
 
-        if (userRepository.verifyRelation(user.getId(), friend.getId()) > 0) {
+        if (userRepository.countRelation(user.getId(), friend.getId()) > 0) {
             log.warn("ADD_FRIEND_ALREADY_EXISTS - L'utilisateur {} est déjà ami avec {} (relation déjà existante)", user.getEmail(), friend.getEmail());
             throw new BusinessException("FRIEND_ALREADY_ADDED", "Personne déjà dans vos contacts");
         }

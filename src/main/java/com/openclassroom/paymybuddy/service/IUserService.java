@@ -60,7 +60,7 @@ public interface IUserService {
  * @param email l'email de l'utilisateur dont on souhaite obtenir la liste d'amis (non {@code null})
  * @return une liste de {@link User} représentant les amis de l'utilisateur
  */
-    List<User> getFriendUsernames(String email);
+    List<User> getFriends(String email);
 
     /**
  * Met à jour le mot de passe d'un utilisateur.
@@ -83,7 +83,7 @@ public interface IUserService {
  * Met à jour le solde d'un utilisateur en ajoutant ou retranchant un montant donné.
  *
  * @param email  l'email de l'utilisateur dont on met à jour le solde (non {@code null})
- * @param Amount le montant à ajouter (peut être négatif pour retrait)
+ * @param amount le montant à ajouter (peut être négatif pour retrait)
  */
-    void updateBalance(String email, double Amount);
+    void updateBalance(String email, double amount);
 }

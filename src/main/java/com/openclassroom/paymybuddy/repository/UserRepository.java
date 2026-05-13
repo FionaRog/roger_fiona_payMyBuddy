@@ -11,7 +11,7 @@ import java.util.Optional;
 /**
  * Repository JPA pour la gestion des utilisateurs.
  * <p>Permet la persistance, la récupération et certaines requêtes complexes liées aux utilisateurs
- * et à leurs relations d'amis (via l'entité {@link User} et la table de relation {@ode assoc_user}).</p>
+ * et à leurs relations d'amis (via l'entité {@link User} et la table de relation {@code assoc_user}).</p>
  *
  * <p>Hérite de {@link CrudRepository} pour bénéficier des méthodes de base (save, findById, delete, etc.).</p>
  */
@@ -41,7 +41,7 @@ public interface UserRepository extends CrudRepository <User, Integer> {
     /**
      * Vérifie l'existence d'une relation d'amitié entre deux utilisateurs.
      *
-     * <p> Interogge la table de relation {@code assoc_user} pour compter le nombre de lignes
+     * <p> Interroge la table de relation {@code assoc_user} pour compter le nombre de lignes
      * où l'utilisateur donné et son ami apparaissent dans ou l'autre des champs {@code id_user1} et {@code id_user}
      * </p>
      *
@@ -50,6 +50,6 @@ public interface UserRepository extends CrudRepository <User, Integer> {
      * @return le nombre de relations trouvées (1 s'il y a une relation, 0 sinon)
      */
     @Query(value= "SELECT count(*) FROM assoc_user WHERE (id_user1 = :userId AND id_user2 = :friendId) OR (id_user1 = :friendId AND id_user2 = :userId)", nativeQuery = true)
-        int verifyRelation(int userId, int friendId);
+        int countRelation(int userId, int friendId);
 
 }

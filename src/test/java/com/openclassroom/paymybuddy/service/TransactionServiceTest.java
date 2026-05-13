@@ -67,7 +67,7 @@ public class TransactionServiceTest {
         when(userRepository.findByEmail("receiver@mail.com"))
                 .thenReturn(Optional.of(receiver));
 
-        when(userRepository.verifyRelation(1, 2))
+        when(userRepository.countRelation(1, 2))
                 .thenReturn(1);
 
         when(transactionRepository.save(any(Transaction.class)))
@@ -85,7 +85,7 @@ public class TransactionServiceTest {
 
         transactionService.addTransaction("sender@mail.com", request);
 
-        double expectedFee = 100.0 * 0.05;
+        double expectedFee = 100.0 * 0.005;
         double expectedTotal = 100.0 + expectedFee;
 
         assertEquals(200.0 - expectedTotal, sender.getBalance());
@@ -197,7 +197,7 @@ public class TransactionServiceTest {
         when(userRepository.findByEmail("receiver@mail.com"))
                 .thenReturn(Optional.of(receiver));
 
-        when(userRepository.verifyRelation(1, 2))
+        when(userRepository.countRelation(1, 2))
                 .thenReturn(0);
 
         assertThrows(BusinessException.class, () ->
@@ -229,7 +229,7 @@ public class TransactionServiceTest {
                 transactionService.addTransaction("sender@mail.com", request)
         );
 
-        verify(userRepository, never()).verifyRelation(anyInt(), anyInt());
+        verify(userRepository, never()).countRelation(anyInt(), anyInt());
         verify(transactionRepository, never()).save(any());
     }
 
@@ -248,7 +248,7 @@ public class TransactionServiceTest {
                 transactionService.addTransaction("sender@mail.com", request)
         );
 
-        verify(userRepository, never()).verifyRelation(anyInt(), anyInt());
+        verify(userRepository, never()).countRelation(anyInt(), anyInt());
         verify(transactionRepository, never()).save(any());
     }
 }

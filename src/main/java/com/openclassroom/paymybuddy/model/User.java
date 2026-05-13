@@ -12,7 +12,7 @@ import java.util.List;
  * <p>
  * Un utilisateur possède un email unique, un nom d'utilisateur, un mot de passe
  * encodé, un solde et une liste d'amis. Cette entité est persistée dans la table
- * {@code user}.
+ * {@code users}.
  * <p>
  * La relation d'amitié est modélisée par une association unidirectionnelle
  * de type {@link ManyToMany} via la table de jointure {@code assoc_user}.

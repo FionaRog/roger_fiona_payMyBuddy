@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
-<html xmlns:th="http://thymeleaf.org">
+<html lang="fr" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Inscription - Pay My Buddy</title>
@@ -15,11 +14,11 @@
     <header class="logo">
         <p>
             <a th:href="@{/login}">Pay My Buddy</a>
-        <p>
+        </p>
     </header>
 
 <main>
-    <p class="alert alert-error" th:if="${param.error}">Email ou mot de pase incorrect.</p>
+    <p class="alert alert-error" th:if="${param.error}">Email ou mot de passe incorrect.</p>
     <p class="alert alert-error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
     <p class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></p>
 

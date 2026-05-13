@@ -33,6 +33,7 @@ public interface TransactionMapper {
     @Mapping(target = "transactionId", ignore = true)
     @Mapping(target = "sender", source = "sender")
     @Mapping(target = "receiver", source = "receiver")
+    @Mapping(target = "fee", ignore = true)
     @Mapping(target = "dateTransaction", expression = "java(LocalDateTime.now())")
     Transaction toEntity(TransactionRequestDto dto, User sender, User receiver);
 
@@ -40,7 +41,7 @@ public interface TransactionMapper {
      * Convertit une entité {@link Transaction} en DTO de réponse.
      *
      * Le pseudo de l'expéditeur et du destinataire sont extraites depuis les relations
-     * {@code sender.username} et {@code sender.username}.
+     * {@code sender.username} et {@code receiver.username}.
      *
      * @param transaction l'entité transaction à convertir
      * @return un {@link TransactionResponseDto} représentant la transaction

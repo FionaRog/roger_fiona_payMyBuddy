@@ -248,7 +248,7 @@ public class UserServiceTest {
         when(userRepository.findByEmail("friend@mail.com"))
                 .thenReturn(Optional.of(friend));
 
-        when(userRepository.verifyRelation(1, 2))
+        when(userRepository.countRelation(1, 2))
                 .thenReturn(0);
 
         userService.addFriend("user@mail.com", "friend@mail.com");
@@ -319,7 +319,7 @@ public class UserServiceTest {
         when(userRepository.findByEmail("friend@mail.com"))
                 .thenReturn(Optional.of(friend));
 
-        when(userRepository.verifyRelation(1, 2))
+        when(userRepository.countRelation(1, 2))
                 .thenReturn(1);
 
         assertThrows(BusinessException.class, () ->
@@ -382,7 +382,7 @@ public class UserServiceTest {
         when(userRepository.findByEmailWithFriends("test@mail.com"))
                 .thenReturn(Optional.of(user));
 
-        List<User> result = userService.getFriendUsernames("test@mail.com");
+        List<User> result = userService.getFriends("test@mail.com");
 
         assertEquals(2, result.size());
     }
@@ -395,7 +395,7 @@ public class UserServiceTest {
                 .thenReturn(Optional.empty());
 
         assertThrows(BusinessException.class, () ->
-                userService.getFriendUsernames("test@mail.com")
+                userService.getFriends("test@mail.com")
         );
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-/*
+/**
 Contrôleur chargé de l'affichage et de la gestion des amis.
 
 <p> Permet à l'utilisateur d'ajouter un ami. </p>

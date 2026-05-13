@@ -10,7 +10,6 @@ import com.openclassroom.paymybuddy.repository.TransactionRepository;
 import com.openclassroom.paymybuddy.repository.UserRepository;
 import com.openclassroom.paymybuddy.service.ITransactionService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -82,7 +81,7 @@ public class TransactionService implements ITransactionService {
 
         double amount = requestDto.getAmount();
 
-        double fee = amount * 0.05;
+        double fee = amount * 0.005;
         double totalAmount = amount + fee;
 
         if(amount <= 0 ) {
@@ -103,7 +102,7 @@ public class TransactionService implements ITransactionService {
             throw new BusinessException("INVALID_TRANSACTION","L'expéditeur et le destinataire doivent être différents");
         }
 
-        int relationCount = userRepository.verifyRelation(sender.getId(), receiver.getId());
+        int relationCount = userRepository.countRelation(sender.getId(), receiver.getId());
         if (relationCount == 0) {
             log.warn("ADD_TRANSACTION_INVALID_FRIENDS - Le destinataire {} n'est pas dans les relations de {}",
                     receiver.getEmail(), senderEmail);
