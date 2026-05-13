@@ -3,10 +3,12 @@ package com.openclassroom.paymybuddy.controller;
 import com.openclassroom.paymybuddy.dto.UpdatePasswordRequestDto;
 import com.openclassroom.paymybuddy.dto.UserResponseDto;
 import com.openclassroom.paymybuddy.service.IUserService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,12 +73,19 @@ public class ProfileController {
      * @return une redirection vers la page de profil
      */
     @PostMapping("/profile/password")
-    public String updatePassword(@ModelAttribute UpdatePasswordRequestDto requestDto,
+    public String updatePassword(@Valid @ModelAttribute UpdatePasswordRequestDto requestDto,
+                                 BindingResult bindingResult,
                                  Authentication authentication,
                                  RedirectAttributes redirectAttributes) {
 
         String email = authentication.getName();
         log.info("POST_PROFILE_PASSWORD_INIT - Appel pour l'utilisateur={}", email);
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Veuillez remplir tous les champs du mot de passe");
+            return "redirect:/profile";
+        }
+
         userService.updatePassword(email, requestDto);
 
         redirectAttributes.addFlashAttribute("successMessage", "Mot de passe mis à jour");

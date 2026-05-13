@@ -1,5 +1,6 @@
 package com.openclassroom.paymybuddy.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,15 +16,18 @@ public class UpdatePasswordRequestDto {
     /**
      * Mot de passe actuel de l'utilisateur.
      */
+    @NotBlank
     private String currentPassword;
 
     /**
      * Nouveau mot de passe.
      */
+    @NotBlank
     private String newPassword;
 
     /**
      * Confirmation du nouveau mot de passe.
      */
+    @NotBlank
     private String confirmPassword;
 }

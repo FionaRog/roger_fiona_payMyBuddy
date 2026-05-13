@@ -59,7 +59,7 @@ class ProfileControllerTest {
         mockMvc.perform(post("/profile/password")
                         .with(csrf())
                         .with(user("test@mail.com"))
-                        .flashAttr("updatePasswordRequestDto", new UpdatePasswordRequestDto()))
+                        .flashAttr("updatePasswordRequestDto", validUpdatePasswordRequest()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/profile"))
                 .andExpect(flash().attributeExists("successMessage"));
@@ -98,9 +98,19 @@ class ProfileControllerTest {
         mockMvc.perform(post("/profile/password")
                         .with(csrf())
                         .with(user("test@mail.com"))
-                        .flashAttr("updatePasswordRequestDto", new UpdatePasswordRequestDto()))
+                        .flashAttr("updatePasswordRequestDto", validUpdatePasswordRequest()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/profile"))
                 .andExpect(flash().attribute("errorMessage", "Mot de passe incorrect"));
     }
+
+    // ------------------ HELPER --------------------
+    private UpdatePasswordRequestDto validUpdatePasswordRequest() {
+        UpdatePasswordRequestDto request = new UpdatePasswordRequestDto();
+        request.setCurrentPassword("oldPassword");
+        request.setNewPassword("newPassword");
+        request.setConfirmPassword("newPassword");
+        return request;
+    }
+
 }

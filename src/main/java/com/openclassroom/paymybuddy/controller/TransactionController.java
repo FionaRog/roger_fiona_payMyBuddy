@@ -5,10 +5,12 @@ import com.openclassroom.paymybuddy.dto.TransactionResponseDto;
 import com.openclassroom.paymybuddy.model.User;
 import com.openclassroom.paymybuddy.service.ITransactionService;
 import com.openclassroom.paymybuddy.service.IUserService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,11 +58,16 @@ public class TransactionController {
      */
     @PostMapping("/transactions/add")
     public String addTransaction(
-            @ModelAttribute TransactionRequestDto requestDto,
+            @Valid @ModelAttribute TransactionRequestDto requestDto, BindingResult bindingResult,
             Authentication authentication, RedirectAttributes redirectAttributes) {
 
         String senderEmail = authentication.getName();
         log.info("POST_TRANSACTIONS_ADD_INIT - Appel pour l'utilisateur={}", senderEmail);
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Veuillez corriger les informations du formulaire");
+            return "redirect:/transactions";}
+
         transactionService.addTransaction(senderEmail, requestDto);
 
         redirectAttributes.addFlashAttribute("successMessage", "Transaction créée");
@@ -89,7 +96,7 @@ public class TransactionController {
         log.debug("GET_TRANSACTIONS_FILTER - Filter reçu: {}", filter);
 
         List<TransactionResponseDto> transactions = transactionService.getUserTransactions(email);
-        List<User> friends = userService.getFriendUsernames(email);
+        List<User> friends = userService.getFriends(email);
 
         String currentUsername = userService.getUserProfile(email).getUsername();
 

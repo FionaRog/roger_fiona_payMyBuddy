@@ -48,7 +48,7 @@ class TransactionControllerTest {
         mockUser.setUsername("Tester");
 
         when(userService.getUserProfile(anyString())).thenReturn(mockUser);
-        when(userService.getFriendUsernames(anyString())).thenReturn(new ArrayList<>());
+        when(userService.getFriends(anyString())).thenReturn(new ArrayList<>());
         when(transactionService.getUserTransactions(anyString())).thenReturn(new ArrayList<>());
 
         mockMvc.perform(get("/transactions")
@@ -64,7 +64,7 @@ class TransactionControllerTest {
         mockMvc.perform(post("/transactions/add")
                         .with(csrf())
                         .with(user("test@mail.com"))
-                        .flashAttr("transactionRequestDto", new TransactionRequestDto()))
+                        .flashAttr("transactionRequestDto", validTransactionRequest()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/transactions"))
                 .andExpect(flash().attributeExists("successMessage"));
@@ -116,9 +116,20 @@ class TransactionControllerTest {
 
         mockMvc.perform(post("/transactions/add").with(csrf())
                         .with(user("test@mail.com"))
-                        .flashAttr("transactionRequestDto", new TransactionRequestDto()))
+                        .flashAttr("transactionRequestDto", validTransactionRequest()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/transactions"))
                 .andExpect(flash().attribute("errorMessage", "Solde insuffisant"));
     }
+
+    // ---------------- HELPER ----------------------
+
+    private TransactionRequestDto validTransactionRequest() {
+        TransactionRequestDto request = new TransactionRequestDto();
+        request.setReceiverEmail("receiver@mail.com");
+        request.setAmount(10.0);
+        request.setDescription("Test");
+        return request;
+    }
+
 }

@@ -1,5 +1,8 @@
 package com.openclassroom.paymybuddy.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +19,8 @@ public class TransactionRequestDto {
     /**
      * Email de l'utilisateur destinataire de la transaction.
      */
+    @NotBlank(message = "L'email du destinataire est obligatoire")
+    @Email(message = "L'email du destinataire doit être valide")
     private String receiverEmail;
 
     /**
@@ -26,5 +31,6 @@ public class TransactionRequestDto {
     /**
      * Montant à transférer.
      */
+    @Positive(message = "Le montant doit être supérieur à 0")
     private double amount;
 }
