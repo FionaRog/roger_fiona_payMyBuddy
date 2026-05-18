@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
+
+
 <body class="auth-page">
 
 <div class="auth-rectangle">
@@ -28,17 +30,17 @@
     <form th:action="@{/register}" id="s'inscrire" method="post">
     <div>
         <label for="username" class="invisible">Username</label>
-        <input class="register-username" type="text" id="username" name="username" placeholder="Username" maxlength="100" required>
+        <input class="register" type="text" id="username" name="username" placeholder="Username" maxlength="100" required>
     </div>
 
     <div>
         <label for="email" class="invisible">Adresse email</label>
-        <input class="register-mail" type="email" id="email" name="email" placeholder="Mail" maxlength="100" required>
+        <input class="register" type="email" id="email" name="email" placeholder="Mail" maxlength="100" required>
     </div>
 
     <div>
         <label for="password" class="invisible">Mot de Passe</label>
-        <input class="register-password" type="password" id="password" name="password" placeholder="Mot de passe" maxlength="255" required>
+        <input class="register" type="password" id="password" name="password" placeholder="Mot de passe" maxlength="255" required>
     </div>
 
     <div>
